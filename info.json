@@ -1,13 +1,12 @@
 {
     "name": "decomposer",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "title": "Decomposer",
     "author": "Talandar",
     "dependencies": [
         "base >= 2.0",
         "space-age",
-        "quality",
-        "! pelagos"
+        "quality"
     ],
     "description": "Introduces a building that recycles spoilage, breaks down agricultural resources, and utilizes specialized bacteria to bio-decompose solid rocks and ores into dusts.",
     "factorio_version": "2.0",
