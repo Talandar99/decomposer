@@ -269,6 +269,7 @@ data:extend({
 		type = "recipe",
 		name = "iron-ore-decomposition",
 		category = "decomposition",
+		subgroup = "agriculture-processes",
 		icons = {
 			{ icon = "__decomposer__/graphics/decomposition-bacteria.png", icon_size = 64 },
 			{ icon = "__base__/graphics/icons/iron-ore.png", icon_size = 64, scale = 0.3, shift = { 8, 8 } },
@@ -290,6 +291,7 @@ data:extend({
 		type = "recipe",
 		name = "copper-ore-decomposition",
 		category = "decomposition",
+		subgroup = "agriculture-processes",
 		icons = {
 			{ icon = "__decomposer__/graphics/decomposition-bacteria.png", icon_size = 64 },
 			{ icon = "__base__/graphics/icons/copper-ore.png", icon_size = 64, scale = 0.3, shift = { 8, 8 } },
@@ -367,7 +369,7 @@ data:extend({
 			{ type = "fluid", name = "organic-sludge", amount = 50 },
 		},
 		main_product = "organic-sludge",
-
+		subgroup = "fluid-recipes",
 		allow_productivity = false,
 		maximum_productivity = 0,
 		allow_quality = false,
@@ -470,5 +472,26 @@ data:extend({
 			{ type = "item", name = "sand", amount = 45 },
 		},
 		results = { { type = "item", name = "decomposer-sandfill", amount = 1 } },
+	},
+	{
+		type = "recipe",
+		name = "improvised-landfill",
+		icon = "__decomposer__/graphics/improvised-landfill.png",
+		energy_required = 0.5,
+		enabled = false,
+		auto_recycle = false,
+		category = "organic",
+		order = "a[organic-products]-c[improvised-landfill]",
+		ingredients = {
+			{ type = "item", name = "stone", amount = 20 },
+			{ type = "item", name = "spoilage", amount = 60 },
+		},
+		results = { { type = "item", name = "landfill", amount = 1 } },
+		crafting_machine_tint = {
+			primary = { r = 0.37, g = 0.37, b = 0.18, a = 1.000 },
+			secondary = { r = 0.47, g = 0.47, b = 0.28, a = 1.000 },
+			tertiary = { r = 0.37, g = 0.37, b = 0.18, a = 1.000 },
+			quaternary = { r = 0.47, g = 0.47, b = 0.28, a = 1.000 },
+		},
 	},
 })

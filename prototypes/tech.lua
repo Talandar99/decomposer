@@ -33,6 +33,7 @@ data:extend({
 		icon = "__decomposer__/graphics/organic-decomposition.png",
 		icon_size = 128,
 		effects = {
+			{ type = "unlock-recipe", recipe = "fermented-fish" },
 			{ type = "unlock-recipe", recipe = "decomposition-bacteria-cultivation-fermented-fish" },
 		},
 		prerequisites = { "decomposer" },
@@ -127,5 +128,56 @@ data:extend({
 			time = 60,
 		},
 		order = "g[vulcanus]-b[lithic-melting]",
+	},
+})
+
+data:extend({
+	{
+		type = "technology",
+		name = "improvised-landfill",
+		icon = "__decomposer__/graphics/improvised-landfill.png",
+		icon_size = 64,
+		effects = {
+			{ type = "unlock-recipe", recipe = "improvised-landfill" },
+		},
+		order = "[decomposer]",
+		prerequisites = { "organic-decomposition" },
+		unit = {
+			count = 1000,
+			ingredients = {
+				{ "automation-science-pack", 1 },
+				{ "logistic-science-pack", 1 },
+				{ "chemical-science-pack", 1 },
+				{ "space-science-pack", 1 },
+				{ "agricultural-science-pack", 1 },
+			},
+			time = 60,
+		},
+	},
+})
+
+data:extend({
+	{
+		type = "technology",
+		name = "asteroid-bioprocessing",
+		icon = "__decomposer__/graphics/asteroids-bioprocessing.png",
+		icon_size = 120,
+		effects = {
+			--{ type = "unlock-recipe", recipe = "oxide-asteroid-melting" },
+			--{ type = "unlock-recipe", recipe = "metallic-asteroid-methane-crushing" },
+			--{ type = "unlock-recipe", recipe = "carbonic-asteroid-gasification" },
+		},
+		prerequisites = { "lithic-decomposition" },
+		unit = {
+			count_formula = "500",
+			ingredients = {
+				{ "automation-science-pack", 1 },
+				{ "logistic-science-pack", 1 },
+				{ "chemical-science-pack", 1 },
+				{ "space-science-pack", 1 },
+				{ "agricultural-science-pack", 1 },
+			},
+			time = 60,
+		},
 	},
 })
