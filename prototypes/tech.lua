@@ -163,9 +163,9 @@ data:extend({
 		icon = "__decomposer__/graphics/asteroids-bioprocessing.png",
 		icon_size = 120,
 		effects = {
-			--{ type = "unlock-recipe", recipe = "oxide-asteroid-melting" },
-			--{ type = "unlock-recipe", recipe = "metallic-asteroid-methane-crushing" },
-			--{ type = "unlock-recipe", recipe = "carbonic-asteroid-gasification" },
+			{ type = "unlock-recipe", recipe = "oxide-asteroid-melting" },
+			{ type = "unlock-recipe", recipe = "metallic-asteroid-methane-crushing" },
+			{ type = "unlock-recipe", recipe = "carbonic-asteroid-gasification" },
 		},
 		prerequisites = { "lithic-decomposition" },
 		unit = {

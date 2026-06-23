@@ -19,7 +19,7 @@ data:extend({
 		allow_productivity = true,
 		energy_required = 1,
 		ingredients = {
-			{ type = "item", name = "raw-fish", amount = 20 },
+			{ type = "item", name = "raw-fish", amount = 5 },
 			{ type = "item", name = "spoilage", amount = 30 },
 			{ type = "fluid", name = "water", amount = 100 },
 		},
@@ -493,5 +493,95 @@ data:extend({
 			tertiary = { r = 0.37, g = 0.37, b = 0.18, a = 1.000 },
 			quaternary = { r = 0.47, g = 0.47, b = 0.28, a = 1.000 },
 		},
+	},
+})
+data:extend({
+	{
+		type = "recipe",
+		name = "metallic-asteroid-methane-crushing",
+		icons = {
+			{ icon = "__space-age__/graphics/icons/metallic-asteroid-chunk.png", icon_size = 64 },
+			{ icon = "__decomposer__/graphics/methane.png", icon_size = 64, scale = 0.4, shift = { 8, -8 } },
+		},
+		category = "organic-or-chemistry",
+		additional_categories = { "decomposition" },
+		subgroup = "space-crushing",
+		order = "g-a-a",
+		auto_recycle = false,
+		enabled = false,
+		ingredients = {
+			{ type = "item", name = "metallic-asteroid-chunk", amount = 1 },
+			{ type = "fluid", name = "methane", amount = 20 },
+		},
+		energy_required = 4,
+		results = {
+			{ type = "item", name = "iron-ore", amount = 40 },
+		},
+		crafting_machine_tint = {
+			primary = { r = 79, g = 121, b = 148, a = 1.000 },
+			secondary = { r = 85, g = 132, b = 161, a = 1.000 },
+			tertiary = { r = 79, g = 121, b = 148, a = 1.000 },
+			quaternary = { r = 85, g = 132, b = 161, a = 1.000 },
+		},
+		allow_productivity = true,
+		allow_decomposition = false,
+	},
+	{
+		type = "recipe",
+		name = "carbonic-asteroid-gasification",
+		icons = {
+			{ icon = "__space-age__/graphics/icons/carbonic-asteroid-chunk.png", icon_size = 64 },
+			{ icon = "__decomposer__/graphics/methane.png", icon_size = 64, scale = 0.4, shift = { 8, -8 } },
+		},
+		category = "decomposition",
+		subgroup = "space-crushing",
+		order = "g-a-b",
+		auto_recycle = false,
+		enabled = false,
+		ingredients = {
+			{ type = "item", name = "carbonic-asteroid-chunk", amount = 1 },
+			{ type = "fluid", name = "water", amount = 20 },
+		},
+		energy_required = 4,
+		results = {
+			{ type = "fluid", name = "methane", amount = 200 },
+		},
+		crafting_machine_tint = {
+			primary = { r = 163, g = 209, b = 62, a = 1.000 },
+			secondary = { r = 193, g = 239, b = 92, a = 1.000 },
+			tertiary = { r = 163, g = 209, b = 62, a = 1.000 },
+			quaternary = { r = 193, g = 239, b = 92, a = 1.000 },
+		},
+		allow_productivity = true,
+		allow_decomposition = false,
+	},
+	{
+		type = "recipe",
+		name = "oxide-asteroid-melting",
+		icons = {
+			{ icon = "__space-age__/graphics/icons/oxide-asteroid-chunk.png", icon_size = 64 },
+			{ icon = "__base__/graphics/icons/fluid/water.png", icon_size = 64, scale = 0.4, shift = { 8, -8 } },
+		},
+		category = "organic",
+		additional_categories = { "decomposition" },
+		subgroup = "space-crushing",
+		order = "g-a-c",
+		auto_recycle = false,
+		enabled = false,
+		ingredients = {
+			{ type = "item", name = "oxide-asteroid-chunk", amount = 1 },
+		},
+		energy_required = 4,
+		results = {
+			{ type = "fluid", name = "water", amount = 200 },
+		},
+		crafting_machine_tint = {
+			primary = { r = 42, g = 143, b = 189, a = 1.000 },
+			secondary = { r = 7, g = 80, b = 98, a = 1.000 },
+			tertiary = { r = 42, g = 143, b = 189, a = 1.000 },
+			quaternary = { r = 7, g = 80, b = 98, a = 1.000 },
+		},
+		allow_productivity = true,
+		allow_decomposition = false,
 	},
 })

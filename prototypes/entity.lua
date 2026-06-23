@@ -169,7 +169,7 @@ data:extend({
 						frame_count = 1,
 						line_length = 1,
 						repeat_count = 1,
-						scale = 0.45,
+						scale = 0.4575,
 						shift = { 0, -0.1 },
 					},
 					{

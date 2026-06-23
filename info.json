@@ -6,6 +6,7 @@
     "dependencies": [
         "base >= 2.0",
         "space-age",
+        "? skewer_planet_vesta",
         "quality"
     ],
     "description": "Introduces a building that recycles spoilage, breaks down agricultural resources, and utilizes specialized bacteria to bio-decompose solid rocks and ores into dusts.",

@@ -76,6 +76,8 @@ make_decomposition_recipe("organic-decomposition", "yumako", 40)
 make_decomposition_recipe("organic-decomposition", "bioflux", 120)
 make_decomposition_recipe("organic-decomposition", "fermented-fish", 60)
 
---make_decomposition_recipe("organic-decomposition", "coconut", 80)
---make_decomposition_recipe("decomposer", "coconut-husk", 20)
---make_decomposition_recipe("decomposer", "coconut-seed", 50)
+if mods["pelagos"] then
+	make_decomposition_recipe("organic-decomposition", "coconut", 80)
+	make_decomposition_recipe("decomposer", "coconut-husk", 20)
+	make_decomposition_recipe("decomposer", "coconut-seed", 50)
+end
