@@ -6,8 +6,8 @@ data:extend({
 		icon_size = 256,
 		effects = {
 			{ type = "unlock-recipe", recipe = "decomposer" },
-			{ type = "unlock-recipe", recipe = "decomposition-bacteria" },
-			{ type = "unlock-recipe", recipe = "decomposition-bacteria-cultivation" },
+			{ type = "unlock-recipe", recipe = "fermentation-bacteria" },
+			{ type = "unlock-recipe", recipe = "fermentation-bacteria-cultivation" },
 			{ type = "unlock-recipe", recipe = "nutrients-spoiling" },
 		},
 		prerequisites = { "agricultural-science-pack", "fish-breeding", "tree-seeding" },
@@ -34,7 +34,7 @@ data:extend({
 		icon_size = 128,
 		effects = {
 			{ type = "unlock-recipe", recipe = "fermented-fish" },
-			{ type = "unlock-recipe", recipe = "decomposition-bacteria-cultivation-fermented-fish" },
+			{ type = "unlock-recipe", recipe = "fermentation-bacteria-cultivation-fermented-fish" },
 		},
 		prerequisites = { "decomposer" },
 		unit = {

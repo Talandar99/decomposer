@@ -10,7 +10,7 @@
         "quality"
     ],
     "description": "Introduces a building that recycles spoilage, breaks down agricultural resources, and utilizes specialized bacteria to bio-decompose solid rocks and ores into dusts.",
-    "factorio_version": "2.0",
+    "factorio_version": "2.1",
     "space_travel_required": true,
     "spoiling_required": true
 }

@@ -6,14 +6,14 @@ local sounds = require("__base__.prototypes.entity.sounds")
 data:extend({
 	{
 		type = "item",
-		name = "decomposition-bacteria",
-		icon = "__decomposer__/graphics/decomposition-bacteria.png",
+		name = "fermentation-bacteria",
+		icon = "__decomposer__/graphics/fermentation-bacteria.png",
 		subgroup = "agriculture-processes",
-		order = "b[agriculture]-d[bacteria]-a[decomposition-bacteria]",
+		order = "b[agriculture]-d[bacteria]-a[fermentation-bacteria]",
 		inventory_move_sound = space_age_item_sounds.agriculture_inventory_move,
 		pick_sound = space_age_item_sounds.agriculture_inventory_pickup,
 		drop_sound = space_age_item_sounds.agriculture_inventory_move,
-		fuel_category = "chemical",
+		fuel_categories = { "chemical" },
 		fuel_value = "25kJ",
 		stack_size = 20,
 		--default_import_location = "pelagos",
@@ -33,7 +33,7 @@ data:extend({
 		inventory_move_sound = space_age_item_sounds.agriculture_inventory_move,
 		pick_sound = space_age_item_sounds.agriculture_inventory_pickup,
 		drop_sound = space_age_item_sounds.agriculture_inventory_move,
-		fuel_category = "food",
+		fuel_categories = { "food" },
 		fuel_value = "3MJ",
 		stack_size = 20,
 		--default_import_location = "pelagos",
@@ -73,10 +73,34 @@ data:extend({
 		--default_import_location = "pelagos",
 		weight = 5 * kg,
 	},
-})
-
--- sandfill
-data:extend({
+	{
+		type = "item",
+		name = "holmium-dust",
+		icon = "__decomposer__/graphics/holmium-dust.png",
+		--subgroup = "pelagos-processes",
+		subgroup = "raw-material",
+		order = "b[iron]-c[iron-dust]",
+		inventory_move_sound = item_sounds.metal_small_inventory_move,
+		pick_sound = item_sounds.metal_small_inventory_pickup,
+		drop_sound = item_sounds.metal_small_inventory_move,
+		stack_size = 50,
+		--default_import_location = "pelagos",
+		weight = 5 * kg,
+	},
+	{
+		type = "item",
+		name = "tungsten-dust",
+		icon = "__decomposer__/graphics/tungsten-dust.png",
+		--subgroup = "pelagos-processes",
+		subgroup = "raw-material",
+		order = "b[iron]-c[iron-dust]",
+		inventory_move_sound = item_sounds.metal_small_inventory_move,
+		pick_sound = item_sounds.metal_small_inventory_pickup,
+		drop_sound = item_sounds.metal_small_inventory_move,
+		stack_size = 50,
+		--default_import_location = "pelagos",
+		weight = 5 * kg,
+	},
 	{
 		type = "item",
 		name = "sand",
@@ -89,6 +113,22 @@ data:extend({
 		stack_size = 50,
 		weight = 1 * kg,
 	},
+	{
+		type = "item",
+		name = "salt",
+		icon = "__decomposer__/graphics/salt.png",
+		subgroup = "raw-resource",
+		order = "d[sand]",
+		inventory_move_sound = item_sounds.resource_inventory_move,
+		pick_sound = item_sounds.resource_inventory_pickup,
+		drop_sound = item_sounds.resource_inventory_move,
+		stack_size = 50,
+		weight = 1 * kg,
+	},
+})
+
+-- sandfill
+data:extend({
 	{
 		type = "item",
 		name = "decomposer-sandfill",

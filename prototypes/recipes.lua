@@ -10,11 +10,10 @@ data:extend({
 data:extend({
 	{
 		type = "recipe",
-		name = "decomposition-bacteria",
-		category = "decomposition",
-		additional_categories = { "organic" },
+		name = "fermentation-bacteria",
+		categories = { "decomposition", "organic" },
 		subgroup = "agriculture-processes",
-		order = "b[agriculture]-d[bacteria]-a[decomposition-bacteria]",
+		order = "b[agriculture]-d[bacteria]-a[fermentation-bacteria]",
 		enabled = false,
 		allow_productivity = true,
 		energy_required = 1,
@@ -24,10 +23,10 @@ data:extend({
 			{ type = "fluid", name = "water", amount = 100 },
 		},
 		results = {
-			{ type = "item", name = "decomposition-bacteria", amount = 1, probability = 0.1 },
+			{ type = "item", name = "fermentation-bacteria", amount = 1, independant_probability = 0.1 },
 			{ type = "item", name = "spoilage", amount = 5 },
 		},
-		main_product = "decomposition-bacteria",
+		main_product = "fermentation-bacteria",
 		crafting_machine_tint = {
 			primary = { r = 0.57, g = 0.72, b = 0.41, a = 1.000 },
 			secondary = { r = 0.67, g = 0.82, b = 0.51, a = 1.000 },
@@ -37,25 +36,28 @@ data:extend({
 	},
 	{
 		type = "recipe",
-		name = "decomposition-bacteria-cultivation",
+		name = "fermentation-bacteria-cultivation",
 		icons = {
-			{ icon = "__decomposer__/graphics/decomposition-bacteria-cultivation.png", icon_size = 64 },
+			{ icon = "__decomposer__/graphics/fermentation-bacteria-cultivation.png", icon_size = 64 },
 			{ icon = "__base__/graphics/icons/fish.png", icon_size = 64, scale = 0.3, shift = { 8, 8 } },
 		},
-		category = "decomposition",
-		additional_categories = { "organic" },
+		categories = { "decomposition", "organic" },
 		subgroup = "agriculture-processes",
-		order = "b[agriculture]-d[bacteria]-b[decomposition-bacteria-cultivation]",
+		order = "b[agriculture]-d[bacteria]-b[fermentation-bacteria-cultivation]",
 		enabled = false,
 		allow_productivity = true,
-		reset_freshness_on_craft = true,
 		energy_required = 4,
 		ingredients = {
-			{ type = "item", name = "decomposition-bacteria", amount = 1 },
+			{ type = "item", name = "fermentation-bacteria", amount = 1 },
 			{ type = "item", name = "raw-fish", amount = 1 },
 		},
 		results = {
-			{ type = "item", name = "decomposition-bacteria", amount = 12 },
+			{
+				type = "item",
+				name = "fermentation-bacteria",
+				amount = 12,
+				reset_freshness_on_craft = true,
+			},
 		},
 		crafting_machine_tint = {
 			primary = { r = 0.57, g = 0.72, b = 0.41, a = 1.000 },
@@ -67,25 +69,29 @@ data:extend({
 	},
 	{
 		type = "recipe",
-		name = "decomposition-bacteria-cultivation-fermented-fish",
+		name = "fermentation-bacteria-cultivation-fermented-fish",
 		icons = {
-			{ icon = "__decomposer__/graphics/decomposition-bacteria-cultivation.png", icon_size = 64 },
+			{ icon = "__decomposer__/graphics/fermentation-bacteria-cultivation.png", icon_size = 64 },
 			{ icon = "__decomposer__/graphics/fermented-fish.png", icon_size = 64, scale = 0.3, shift = { 8, 8 } },
 		},
-		category = "decomposition",
+		categories = { "decomposition" },
 		surface_conditions = {},
 		subgroup = "agriculture-processes",
-		order = "b[agriculture]-d[bacteria]-b[decomposition-bacteria-cultivation]",
+		order = "b[agriculture]-d[bacteria]-b[fermentation-bacteria-cultivation]",
 		enabled = false,
 		allow_productivity = true,
-		reset_freshness_on_craft = true,
 		energy_required = 4,
 		ingredients = {
-			{ type = "item", name = "decomposition-bacteria", amount = 1 },
+			{ type = "item", name = "fermentation-bacteria", amount = 1 },
 			{ type = "item", name = "fermented-fish", amount = 1 },
 		},
 		results = {
-			{ type = "item", name = "decomposition-bacteria", amount = 12 },
+			{
+				type = "item",
+				name = "fermentation-bacteria",
+				amount = 12,
+				reset_freshness_on_craft = true,
+			},
 		},
 		crafting_machine_tint = {
 			primary = { r = 0.57, g = 0.72, b = 0.41, a = 1.000 },
@@ -98,7 +104,7 @@ data:extend({
 	{
 		type = "recipe",
 		name = "fermented-fish",
-		category = "decomposition",
+		categories = { "decomposition" },
 		subgroup = "decomposition-products",
 		order = "a[seeds]-c[wood-spoiling]",
 		auto_recycle = false,
@@ -107,7 +113,7 @@ data:extend({
 		energy_required = 10,
 		ingredients = {
 			{ type = "item", name = "raw-fish", amount = 10 },
-			{ type = "item", name = "decomposition-bacteria", amount = 5 },
+			{ type = "item", name = "fermentation-bacteria", amount = 5 },
 		},
 		results = {
 			{ type = "item", name = "fermented-fish", amount = 10 },
@@ -125,7 +131,7 @@ data:extend({
 		icons = {
 			{ icon = "__decomposer__/graphics/nutrients-spoiling.png", icon_size = 64 },
 		},
-		category = "decomposition",
+		categories = { "decomposition" },
 		subgroup = "decomposition-products",
 		order = "c[nutrients]-a[zspoilage]",
 		enabled = false,
@@ -147,7 +153,7 @@ data:extend({
 	--			{ icon = "__pelagos__/graphics/methane.png", icon_size = 64 },
 	--			{ icon = "__space-age__/graphics/icons/nutrients-from-spoilage.png", icon_size = 64 },
 	--		},
-	--		category = "decomposition",
+	--		categories = "decomposition",
 	--		subgroup = "decomposition-products",
 	--		order = "c[nutrients]-c[nutrients-from-spoilage-methane]",
 	--		enabled = false,
@@ -166,7 +172,7 @@ data:extend({
 	--	{
 	--		type = "recipe",
 	--		name = "pelagos-science-pack",
-	--		category = "decomposition",
+	--		categories = "decomposition",
 	--		subgroup = "science-pack",
 	--		surface_conditions = {
 	--			{
@@ -179,7 +185,7 @@ data:extend({
 	--		ingredients = {
 	--			{ type = "item", name = "coconut-sealant", amount = 2 },
 	--			{ type = "item", name = "engine-unit", amount = 1 },
-	--			{ type = "item", name = "decomposition-bacteria", amount = 3 },
+	--			{ type = "item", name = "fermentation-bacteria", amount = 3 },
 	--			{ type = "item", name = "activated-carbon", amount = 1 },
 	--			{ type = "item", name = "titanium-dust", amount = 1 },
 	--		},
@@ -196,7 +202,7 @@ data:extend({
 	{
 		type = "recipe",
 		name = "stone-erosion",
-		category = "decomposition",
+		categories = "decomposition",
 		icons = {
 			{ icon = "__base__/graphics/icons/stone.png", icon_size = 64 },
 			{ icon = "__base__/graphics/icons/fluid/water.png", icon_size = 64, scale = 0.3, shift = { 8, 8 } },
@@ -218,10 +224,9 @@ data:extend({
 	{
 		type = "recipe",
 		name = "decomposer",
-		additional_categories = { "organic-or-assembling" },
-		category = "decomposition",
+		categories = { "decomposition", "crafting", "organic" },
 		subgroup = "agriculture-processes",
-		order = "b[agriculture]-d[bacteria]-a[decomposition-bacteria]",
+		order = "b[agriculture]-d[bacteria]-a[fermentation-bacteria]",
 		enabled = false,
 		allow_productivity = true,
 		energy_required = 1,
@@ -247,9 +252,9 @@ data:extend({
 	{
 		type = "recipe",
 		name = "stone-erosion",
-		category = "decomposition",
+		categories = { "decomposition" },
 		icons = {
-			{ icon = "__decomposer__/graphics/decomposition-bacteria.png", icon_size = 64 },
+			{ icon = "__decomposer__/graphics/fermentation-bacteria.png", icon_size = 64 },
 			{ icon = "__base__/graphics/icons/stone.png", icon_size = 64, scale = 0.3, shift = { 8, 8 } },
 		},
 		enabled = false,
@@ -257,7 +262,7 @@ data:extend({
 		energy_required = 5,
 		ingredients = {
 			{ type = "item", name = "stone", amount = 5 },
-			{ type = "item", name = "decomposition-bacteria", amount = 1 },
+			{ type = "item", name = "fermentation-bacteria", amount = 1 },
 			{ type = "fluid", name = "water", amount = 10 },
 		},
 		results = {
@@ -268,10 +273,10 @@ data:extend({
 	{
 		type = "recipe",
 		name = "iron-ore-decomposition",
-		category = "decomposition",
+		categories = { "decomposition" },
 		subgroup = "agriculture-processes",
 		icons = {
-			{ icon = "__decomposer__/graphics/decomposition-bacteria.png", icon_size = 64 },
+			{ icon = "__decomposer__/graphics/fermentation-bacteria.png", icon_size = 64 },
 			{ icon = "__base__/graphics/icons/iron-ore.png", icon_size = 64, scale = 0.3, shift = { 8, 8 } },
 		},
 		enabled = false,
@@ -279,7 +284,7 @@ data:extend({
 		energy_required = 5,
 		ingredients = {
 			{ type = "item", name = "iron-ore", amount = 5 },
-			{ type = "item", name = "decomposition-bacteria", amount = 1 },
+			{ type = "item", name = "fermentation-bacteria", amount = 1 },
 			{ type = "fluid", name = "water", amount = 10 },
 		},
 		results = {
@@ -290,10 +295,10 @@ data:extend({
 	{
 		type = "recipe",
 		name = "copper-ore-decomposition",
-		category = "decomposition",
+		categories = { "decomposition" },
 		subgroup = "agriculture-processes",
 		icons = {
-			{ icon = "__decomposer__/graphics/decomposition-bacteria.png", icon_size = 64 },
+			{ icon = "__decomposer__/graphics/fermentation-bacteria.png", icon_size = 64 },
 			{ icon = "__base__/graphics/icons/copper-ore.png", icon_size = 64, scale = 0.3, shift = { 8, 8 } },
 		},
 		enabled = false,
@@ -301,7 +306,7 @@ data:extend({
 		energy_required = 5,
 		ingredients = {
 			{ type = "item", name = "copper-ore", amount = 5 },
-			{ type = "item", name = "decomposition-bacteria", amount = 1 },
+			{ type = "item", name = "fermentation-bacteria", amount = 1 },
 			{ type = "fluid", name = "water", amount = 10 },
 		},
 		results = {
@@ -319,7 +324,7 @@ data:extend({
 			{ icon = "__base__/graphics/icons/iron-plate.png", icon_size = 64, scale = 0.5, shift = { 8, 8 } },
 		},
 		auto_recycle = false,
-		category = "smelting",
+		categories = { "smelting" },
 		enabled = false,
 		energy_required = 4,
 		ingredients = { { type = "item", name = "iron-dust", amount = 1 } },
@@ -338,7 +343,7 @@ data:extend({
 			{ icon = "__base__/graphics/icons/copper-plate.png", icon_size = 64, scale = 0.5, shift = { 8, 8 } },
 		},
 		auto_recycle = false,
-		category = "smelting",
+		categories = { "smelting" },
 		enabled = false,
 		energy_required = 4,
 		ingredients = { { type = "item", name = "copper-dust", amount = 1 } },
@@ -354,7 +359,7 @@ data:extend({
 	{
 		type = "recipe",
 		name = "organic-sludge-from-spoilage",
-		category = "decomposition",
+		categories = { "decomposition", "organic" },
 		icons = {
 			{ icon = "__decomposer__/graphics/organic-sludge.png", icon_size = 64 },
 			{ icon = "__space-age__/graphics/icons/spoilage.png", icon_size = 64, scale = 0.3, shift = { 8, 8 } },
@@ -379,9 +384,8 @@ data:extend({
 	{
 		type = "recipe",
 		name = "spoilage-from-organic-sludge",
-		category = "decomposition",
+		categories = { "decomposition", "organic" },
 		subgroup = "decomposition-products",
-		additional_categories = { "organic" },
 		icons = {
 			{ icon = "__space-age__/graphics/icons/spoilage.png", icon_size = 64 },
 			{
@@ -414,7 +418,7 @@ data:extend({
 			{ icon = "__decomposer__/graphics/iron-dust.png", icon_size = 64 },
 			{ icon = "__space-age__/graphics/icons/calcite.png", icon_size = 64, scale = 0.3, shift = { 8, 8 } },
 		},
-		category = "metallurgy",
+		categories = { "metallurgy" },
 		subgroup = "vulcanus-processes",
 		order = "a[melting]-b[molten-iron-dust]",
 		auto_recycle = false,
@@ -440,7 +444,7 @@ data:extend({
 			{ icon = "__decomposer__/graphics/copper-dust.png", icon_size = 64 },
 			{ icon = "__space-age__/graphics/icons/calcite.png", icon_size = 64, scale = 0.3, shift = { 8, 8 } },
 		},
-		category = "metallurgy",
+		categories = { "metallurgy" },
 		subgroup = "vulcanus-processes",
 		order = "a[melting]-c[molten-copper-dust]",
 		auto_recycle = false,
@@ -467,7 +471,7 @@ data:extend({
 		energy_required = 0.5,
 		enabled = false,
 		auto_recycle = false,
-		category = "organic",
+		categories = { "organic" },
 		ingredients = {
 			{ type = "item", name = "sand", amount = 45 },
 		},
@@ -480,7 +484,7 @@ data:extend({
 		energy_required = 0.5,
 		enabled = false,
 		auto_recycle = false,
-		category = "organic",
+		categories = { "organic" },
 		order = "a[organic-products]-c[improvised-landfill]",
 		ingredients = {
 			{ type = "item", name = "stone", amount = 20 },
@@ -503,8 +507,7 @@ data:extend({
 			{ icon = "__space-age__/graphics/icons/metallic-asteroid-chunk.png", icon_size = 64 },
 			{ icon = "__decomposer__/graphics/methane.png", icon_size = 64, scale = 0.4, shift = { 8, -8 } },
 		},
-		category = "organic-or-chemistry",
-		additional_categories = { "decomposition" },
+		categories = { "organic", "chemistry", "decomposition" },
 		subgroup = "space-crushing",
 		order = "g-a-a",
 		auto_recycle = false,
@@ -533,7 +536,7 @@ data:extend({
 			{ icon = "__space-age__/graphics/icons/carbonic-asteroid-chunk.png", icon_size = 64 },
 			{ icon = "__decomposer__/graphics/methane.png", icon_size = 64, scale = 0.4, shift = { 8, -8 } },
 		},
-		category = "decomposition",
+		categories = { "decomposition" },
 		subgroup = "space-crushing",
 		order = "g-a-b",
 		auto_recycle = false,
@@ -562,8 +565,7 @@ data:extend({
 			{ icon = "__space-age__/graphics/icons/oxide-asteroid-chunk.png", icon_size = 64 },
 			{ icon = "__base__/graphics/icons/fluid/water.png", icon_size = 64, scale = 0.4, shift = { 8, -8 } },
 		},
-		category = "organic",
-		additional_categories = { "decomposition" },
+		categories = { "organic", "decomposition" },
 		subgroup = "space-crushing",
 		order = "g-a-c",
 		auto_recycle = false,

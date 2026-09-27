@@ -34,7 +34,7 @@ local function make_decomposition_recipe(technology_name, item_name, spoilage_am
 					tint = dark_green_tint,
 				},
 			},
-			category = "decomposition",
+			categories = { "decomposition" },
 			subgroup = "decomposition-products",
 			order = "a[seeds]-c[" .. recipe_name .. "]",
 			auto_recycle = false,
