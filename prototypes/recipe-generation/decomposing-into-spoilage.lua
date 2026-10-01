@@ -1,4 +1,4 @@
-local function make_decomposition_recipe(technology_name, item_name, spoilage_amount)
+function decomposing_into_spoilage_recipe(technology_name, item_name, spoilage_amount)
 	local dark_green_tint = { r = 0.55, g = 0.7, b = 0.55, a = 1.0 }
 
 	local source_item = data.raw.item[item_name]
@@ -66,18 +66,4 @@ local function make_decomposition_recipe(technology_name, item_name, spoilage_am
 			})
 		end
 	end
-end
-
-make_decomposition_recipe("decomposer", "wood", 40)
-make_decomposition_recipe("organic-decomposition", "yumako-seed", 50)
-make_decomposition_recipe("organic-decomposition", "tree-seed", 50)
-make_decomposition_recipe("organic-decomposition", "jellynut", 100)
-make_decomposition_recipe("organic-decomposition", "yumako", 40)
-make_decomposition_recipe("organic-decomposition", "bioflux", 120)
-make_decomposition_recipe("organic-decomposition", "fermented-fish", 60)
-
-if mods["pelagos"] then
-	make_decomposition_recipe("organic-decomposition", "coconut", 80)
-	make_decomposition_recipe("decomposer", "coconut-husk", 20)
-	make_decomposition_recipe("decomposer", "coconut-seed", 50)
 end

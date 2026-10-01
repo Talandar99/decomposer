@@ -11,6 +11,20 @@ data:extend({
 		flow_color = { r = 0.35, g = 0.42, b = 0.18 },
 		gas_temperature = 100,
 	},
+	{
+		type = "fluid",
+		name = "salt-water",
+		icon = "__decomposer__/graphics/salt-water.png",
+		subgroup = "fluid",
+		default_temperature = 15,
+		max_temperature = 100,
+		heat_capacity = "2kJ",
+		base_color = { 0.2, 0.54, 0.8 },
+		flow_color = { 0.8, 0.8, 0.8 },
+		order = "a[fluid]-a[water]-a[water]",
+		auto_barrel = true,
+		auto_wooden_barrel = true,
+	},
 })
 
 if mods["skewer_planet_vesta"] then

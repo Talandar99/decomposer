@@ -8,9 +8,37 @@ data:extend({
 			{ type = "unlock-recipe", recipe = "decomposer" },
 			{ type = "unlock-recipe", recipe = "fermentation-bacteria" },
 			{ type = "unlock-recipe", recipe = "fermentation-bacteria-cultivation" },
+			{ type = "unlock-recipe", recipe = "lithic-bacteria" },
+			{ type = "unlock-recipe", recipe = "lithic-bacteria-cultivation" },
 			{ type = "unlock-recipe", recipe = "nutrients-spoiling" },
 		},
 		prerequisites = { "agricultural-science-pack", "fish-breeding", "tree-seeding" },
+		unit = {
+			count = 1000,
+			ingredients = {
+				{ "automation-science-pack", 1 },
+				{ "logistic-science-pack", 1 },
+				{ "chemical-science-pack", 1 },
+				{ "space-science-pack", 1 },
+				{ "agricultural-science-pack", 1 },
+			},
+			time = 60,
+		},
+
+		order = "[decomposer]",
+	},
+})
+
+data:extend({
+	{
+		type = "technology",
+		name = "salt-preservation",
+		icon = "__decomposer__/graphics/salt-preservation.png",
+		icon_size = 192,
+		effects = {
+			{ type = "unlock-recipe", recipe = "salt-water-decomposition" },
+		},
+		prerequisites = { "agricultural-science-pack", "fish-breeding", "tree-seeding", "decomposer" },
 		unit = {
 			count = 1000,
 			ingredients = {
@@ -84,6 +112,36 @@ data:extend({
 data:extend({
 	{
 		type = "technology",
+		name = "exotic-lithic-decomposition",
+		icon = "__decomposer__/graphics/exotic-lithic-decomposition.png",
+		icon_size = 128,
+		effects = {
+			{ type = "unlock-recipe", recipe = "tungsten-ore-decomposition" },
+			{ type = "unlock-recipe", recipe = "tungsten-carbide-from-dust" },
+			{ type = "unlock-recipe", recipe = "tungsten-plate-from-dust" },
+			{ type = "unlock-recipe", recipe = "holmium-ore-decomposition" },
+			{ type = "unlock-recipe", recipe = "holmium-solution-from-dust" },
+		},
+		prerequisites = { "lithic-decomposition", "electromagnetic-science-pack", "metallurgic-science-pack" },
+		unit = {
+			count = 2500,
+			ingredients = {
+				{ "automation-science-pack", 1 },
+				{ "logistic-science-pack", 1 },
+				{ "chemical-science-pack", 1 },
+				{ "space-science-pack", 1 },
+				{ "agricultural-science-pack", 1 },
+				{ "electromagnetic-science-pack", 1 },
+				{ "metallurgic-science-pack", 1 },
+			},
+			time = 60,
+		},
+		order = "[decomposer]",
+	},
+})
+data:extend({
+	{
+		type = "technology",
 		name = "organic-sludge-processing",
 		icon = "__decomposer__/graphics/organic-sludge-tech.png",
 		icon_size = 128,
@@ -112,8 +170,10 @@ data:extend({
 		icon = "__decomposer__/graphics/dust-melting-tech.png",
 		icon_size = 128,
 		effects = {
-			{ type = "unlock-recipe", recipe = "molten-iron-from-dust" },
-			{ type = "unlock-recipe", recipe = "molten-copper-from-dust" },
+			{ type = "unlock-recipe", recipe = "molten-iron-from-dust-salt" },
+			{ type = "unlock-recipe", recipe = "molten-copper-from-dust-salt" },
+			{ type = "unlock-recipe", recipe = "molten-iron-from-dust-calcite" },
+			{ type = "unlock-recipe", recipe = "molten-copper-from-dust-calcite" },
 		},
 		prerequisites = { "metallurgic-science-pack", "lithic-decomposition" },
 		unit = {

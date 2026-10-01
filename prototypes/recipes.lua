@@ -6,14 +6,15 @@ data:extend({
 		order = "mb",
 	},
 })
--- bacteria
+-- fermentation bacteria
+-- lithic bacteria
 data:extend({
 	{
 		type = "recipe",
 		name = "fermentation-bacteria",
 		categories = { "decomposition", "organic" },
 		subgroup = "agriculture-processes",
-		order = "b[agriculture]-d[bacteria]-a[fermentation-bacteria]",
+		order = "b[agriculture]-d[bacteria]-eaa[fermentation-bacteria]",
 		enabled = false,
 		allow_productivity = true,
 		energy_required = 1,
@@ -23,7 +24,13 @@ data:extend({
 			{ type = "fluid", name = "water", amount = 100 },
 		},
 		results = {
-			{ type = "item", name = "fermentation-bacteria", amount = 1, independant_probability = 0.1 },
+			{
+				type = "item",
+				name = "fermentation-bacteria",
+				amount = 1,
+				shared_probability = { min = 0, max = 1 },
+				independant_probability = 0.1,
+			},
 			{ type = "item", name = "spoilage", amount = 5 },
 		},
 		main_product = "fermentation-bacteria",
@@ -43,7 +50,7 @@ data:extend({
 		},
 		categories = { "decomposition", "organic" },
 		subgroup = "agriculture-processes",
-		order = "b[agriculture]-d[bacteria]-b[fermentation-bacteria-cultivation]",
+		order = "b[agriculture]-d[bacteria]-eab[fermentation-bacteria-cultivation]",
 		enabled = false,
 		allow_productivity = true,
 		energy_required = 4,
@@ -77,7 +84,7 @@ data:extend({
 		categories = { "decomposition" },
 		surface_conditions = {},
 		subgroup = "agriculture-processes",
-		order = "b[agriculture]-d[bacteria]-b[fermentation-bacteria-cultivation]",
+		order = "b[agriculture]-d[bacteria]-eab[fermentation-bacteria-cultivation]",
 		enabled = false,
 		allow_productivity = true,
 		energy_required = 4,
@@ -89,7 +96,74 @@ data:extend({
 			{
 				type = "item",
 				name = "fermentation-bacteria",
-				amount = 12,
+				amount = 16,
+				reset_freshness_on_craft = true,
+			},
+		},
+		crafting_machine_tint = {
+			primary = { r = 0.57, g = 0.72, b = 0.41, a = 1.000 },
+			secondary = { r = 0.67, g = 0.82, b = 0.51, a = 1.000 },
+			tertiary = { r = 0.57, g = 0.72, b = 0.41, a = 1.000 },
+			quaternary = { r = 0.67, g = 0.82, b = 0.51, a = 1.000 },
+		},
+		show_amount_in_title = false,
+	},
+	{
+		type = "recipe",
+		name = "lithic-bacteria",
+		categories = { "decomposition", "organic" },
+		subgroup = "agriculture-processes",
+		order = "b[agriculture]-d[bacteria]-eba[lithic-bacteria]",
+		enabled = false,
+		allow_productivity = true,
+		energy_required = 1,
+		ingredients = {
+			{ type = "item", name = "fermentation-bacteria", amount = 20 },
+			{ type = "item", name = "iron-ore", amount = 5 },
+			{ type = "item", name = "nutrients", amount = 100 },
+			{ type = "fluid", name = "water", amount = 100 },
+		},
+		results = {
+			{
+				type = "item",
+				name = "lithic-bacteria",
+				amount = 1,
+				shared_probability = { min = 0, max = 1 },
+				independent_probability = 0.1,
+			},
+			{ type = "item", name = "spoilage", amount = 5 },
+		},
+		main_product = "lithic-bacteria",
+		crafting_machine_tint = {
+			primary = { r = 0.57, g = 0.72, b = 0.41, a = 1.000 },
+			secondary = { r = 0.67, g = 0.82, b = 0.51, a = 1.000 },
+			tertiary = { r = 0.57, g = 0.72, b = 0.41, a = 1.000 },
+			quaternary = { r = 0.67, g = 0.82, b = 0.51, a = 1.000 },
+		},
+	},
+	{
+		type = "recipe",
+		name = "lithic-bacteria-cultivation",
+		icons = {
+			{ icon = "__decomposer__/graphics/lithic-bacteria-cultivation.png", icon_size = 64 },
+			--{ icon = "__space-age__/graphics/icons/carbon.png", icon_size = 64, scale = 0.3, shift = { 8, 8 } },
+		},
+		categories = { "decomposition", "organic" },
+		subgroup = "agriculture-processes",
+		order = "b[agriculture]-d[bacteria]-ebb[lithic-bacteria-cultivation]",
+		enabled = false,
+		allow_productivity = true,
+		energy_required = 4,
+		ingredients = {
+			{ type = "item", name = "fermentation-bacteria", amount = 2 },
+			{ type = "item", name = "lithic-bacteria", amount = 1 },
+			{ type = "item", name = "nutrients", amount = 20 },
+		},
+		results = {
+			{
+				type = "item",
+				name = "lithic-bacteria",
+				amount = 3,
 				reset_freshness_on_craft = true,
 			},
 		},
@@ -112,7 +186,7 @@ data:extend({
 		allow_productivity = true,
 		energy_required = 10,
 		ingredients = {
-			{ type = "item", name = "raw-fish", amount = 10 },
+			{ type = "item", name = "salted-raw-fish", amount = 10 },
 			{ type = "item", name = "fermentation-bacteria", amount = 5 },
 		},
 		results = {
@@ -254,7 +328,7 @@ data:extend({
 		name = "stone-erosion",
 		categories = { "decomposition" },
 		icons = {
-			{ icon = "__decomposer__/graphics/fermentation-bacteria.png", icon_size = 64 },
+			{ icon = "__decomposer__/graphics/lithic-bacteria.png", icon_size = 64 },
 			{ icon = "__base__/graphics/icons/stone.png", icon_size = 64, scale = 0.3, shift = { 8, 8 } },
 		},
 		enabled = false,
@@ -262,7 +336,7 @@ data:extend({
 		energy_required = 5,
 		ingredients = {
 			{ type = "item", name = "stone", amount = 5 },
-			{ type = "item", name = "fermentation-bacteria", amount = 1 },
+			{ type = "item", name = "lithic-bacteria", amount = 1 },
 			{ type = "fluid", name = "water", amount = 10 },
 		},
 		results = {
@@ -276,7 +350,7 @@ data:extend({
 		categories = { "decomposition" },
 		subgroup = "agriculture-processes",
 		icons = {
-			{ icon = "__decomposer__/graphics/fermentation-bacteria.png", icon_size = 64 },
+			{ icon = "__decomposer__/graphics/lithic-bacteria.png", icon_size = 64 },
 			{ icon = "__base__/graphics/icons/iron-ore.png", icon_size = 64, scale = 0.3, shift = { 8, 8 } },
 		},
 		enabled = false,
@@ -284,7 +358,7 @@ data:extend({
 		energy_required = 5,
 		ingredients = {
 			{ type = "item", name = "iron-ore", amount = 5 },
-			{ type = "item", name = "fermentation-bacteria", amount = 1 },
+			{ type = "item", name = "lithic-bacteria", amount = 1 },
 			{ type = "fluid", name = "water", amount = 10 },
 		},
 		results = {
@@ -298,7 +372,7 @@ data:extend({
 		categories = { "decomposition" },
 		subgroup = "agriculture-processes",
 		icons = {
-			{ icon = "__decomposer__/graphics/fermentation-bacteria.png", icon_size = 64 },
+			{ icon = "__decomposer__/graphics/lithic-bacteria.png", icon_size = 64 },
 			{ icon = "__base__/graphics/icons/copper-ore.png", icon_size = 64, scale = 0.3, shift = { 8, 8 } },
 		},
 		enabled = false,
@@ -306,11 +380,77 @@ data:extend({
 		energy_required = 5,
 		ingredients = {
 			{ type = "item", name = "copper-ore", amount = 5 },
-			{ type = "item", name = "fermentation-bacteria", amount = 1 },
+			{ type = "item", name = "lithic-bacteria", amount = 1 },
 			{ type = "fluid", name = "water", amount = 10 },
 		},
 		results = {
 			{ type = "item", name = "copper-dust", amount = 10 },
+		},
+		allow_productivity = true,
+	},
+	{
+		type = "recipe",
+		name = "holmium-ore-decomposition",
+		categories = { "decomposition" },
+		subgroup = "agriculture-processes",
+		icons = {
+			{ icon = "__decomposer__/graphics/lithic-bacteria.png", icon_size = 64 },
+			{ icon = "__space-age__/graphics/icons/holmium-ore.png", icon_size = 64, scale = 0.3, shift = { 8, 8 } },
+		},
+		enabled = false,
+		auto_recycle = false,
+		energy_required = 5,
+		ingredients = {
+			{ type = "item", name = "holmium-ore", amount = 5 },
+			{ type = "item", name = "lithic-bacteria", amount = 1 },
+			{ type = "fluid", name = "water", amount = 10 },
+		},
+		results = {
+			{ type = "item", name = "holmium-dust", amount = 10 },
+		},
+		allow_productivity = true,
+	},
+	{
+		type = "recipe",
+		name = "tungsten-ore-decomposition",
+		categories = { "decomposition" },
+		subgroup = "agriculture-processes",
+		icons = {
+			{ icon = "__decomposer__/graphics/lithic-bacteria.png", icon_size = 64 },
+			{ icon = "__space-age__/graphics/icons/tungsten-ore.png", icon_size = 64, scale = 0.3, shift = { 8, 8 } },
+		},
+		enabled = false,
+		auto_recycle = false,
+		energy_required = 5,
+		ingredients = {
+			{ type = "item", name = "tungsten-ore", amount = 5 },
+			{ type = "item", name = "lithic-bacteria", amount = 1 },
+			{ type = "fluid", name = "water", amount = 10 },
+		},
+		results = {
+			{ type = "item", name = "tungsten-dust", amount = 10 },
+		},
+		allow_productivity = true,
+	},
+	{
+		type = "recipe",
+		name = "salt-water-decomposition",
+		categories = { "decomposition" },
+		subgroup = "agriculture-processes",
+		icons = {
+			{ icon = "__decomposer__/graphics/lithic-bacteria.png", icon_size = 64 },
+			{ icon = "__decomposer__/graphics/salt-water.png", icon_size = 64, scale = 0.3, shift = { 8, 8 } },
+		},
+		enabled = false,
+		auto_recycle = false,
+		energy_required = 5,
+		ingredients = {
+			{ type = "item", name = "lithic-bacteria", amount = 1 },
+			{ type = "fluid", name = "salt-water", amount = 100 },
+		},
+		results = {
+			{ type = "item", name = "salt", amount = 1 },
+			{ type = "fluid", name = "water", amount = 100 },
 		},
 		allow_productivity = true,
 	},
@@ -352,6 +492,87 @@ data:extend({
 		crafting_machine_tint = {
 			primary = { r = 0.8, g = 0.4, b = 0.2, a = 1.000 },
 			secondary = { r = 0.9, g = 0.5, b = 0.3, a = 1.000 },
+		},
+	},
+	{
+		type = "recipe",
+		name = "tungsten-plate-from-dust",
+		icons = {
+			{ icon = "__decomposer__/graphics/tungsten-dust.png", icon_size = 64 },
+			{ icon = "__space-age__/graphics/icons/tungsten-plate.png", icon_size = 64, scale = 0.5, shift = { 8, 8 } },
+		},
+		categories = { "metallurgy" },
+		subgroup = "vulcanus-processes",
+		order = "c[tungsten]-c[tungsten-plate]",
+		enabled = false,
+		ingredients = {
+			{ type = "item", name = "tungsten-dust", amount = 4 },
+			{ type = "fluid", name = "molten-iron", amount = 10 },
+		},
+		energy_required = 10,
+		results = { { type = "item", name = "tungsten-plate", amount = 1 } },
+		allow_productivity = true,
+		auto_recycle = false,
+	},
+	{
+		type = "recipe",
+		name = "tungsten-carbide-from-dust",
+		icons = {
+			{ icon = "__decomposer__/graphics/tungsten-dust.png", icon_size = 64 },
+			{
+				icon = "__space-age__/graphics/icons/tungsten-carbide.png",
+				icon_size = 64,
+				scale = 0.5,
+				shift = { 8, 8 },
+			},
+		},
+		categories = { "crafting-with-fluid" },
+		subgroup = "vulcanus-processes",
+		order = "c[tungsten]-b[tungsten-carbide]",
+		enabled = false,
+		ingredients = {
+			{ type = "item", name = "tungsten-dust", amount = 2 },
+			{ type = "fluid", name = "sulfuric-acid", amount = 10 },
+			{ type = "item", name = "carbon", amount = 1 },
+		},
+		energy_required = 1,
+		results = { { type = "item", name = "tungsten-carbide", amount = 1 } },
+		allow_productivity = true,
+		auto_recycle = false,
+	},
+	{
+		type = "recipe",
+		name = "holmium-solution-from-dust",
+		icons = {
+			{ icon = "__decomposer__/graphics/holmium-dust.png", icon_size = 64 },
+			{
+				icon = "__space-age__/graphics/icons/fluid/holmium-solution.png",
+				icon_size = 64,
+				scale = 0.5,
+				shift = { 8, 8 },
+			},
+		},
+		categories = { "chemistry" },
+		subgroup = "fulgora-processes",
+		order = "b[holmium]-b[holmium-solution]",
+		auto_recycle = false,
+		energy_required = 10,
+		ingredients = {
+			{ type = "item", name = "holmium-dust", amount = 2 },
+			{ type = "item", name = "stone", amount = 1 },
+			{ type = "fluid", name = "water", amount = 10 },
+		},
+		results = {
+			{ type = "fluid", name = "holmium-solution", amount = 100 },
+		},
+		allow_productivity = true,
+		main_product = "holmium-solution",
+		enabled = false,
+		crafting_machine_tint = {
+			primary = { r = 0.598, g = 0.274, b = 0.501, a = 0.502 }, -- #98457f80
+			secondary = { r = 0.524, g = 0.499, b = 0.521, a = 0.502 }, -- #857f8480
+			tertiary = { r = 0.716, g = 0.716, b = 0.716, a = 0.502 }, -- #b6b6b680
+			quaternary = { r = 0.768, g = 0.487, b = 0.684, a = 0.502 }, -- #c37cae80
 		},
 	},
 })
@@ -413,14 +634,66 @@ data:extend({
 data:extend({
 	{
 		type = "recipe",
-		name = "molten-iron-from-dust",
+		name = "molten-iron-from-dust-salt",
+		icons = {
+			{ icon = "__decomposer__/graphics/iron-dust.png", icon_size = 64 },
+			{ icon = "__decomposer__/graphics/salt.png", icon_size = 64, scale = 0.3, shift = { 8, 8 } },
+		},
+		categories = { "metallurgy" },
+		subgroup = "vulcanus-processes",
+		order = "a[melting]-b[molten-iron-dust-salt]",
+		auto_recycle = false,
+		show_amount_in_title = false,
+		always_show_products = true,
+		enabled = false,
+		ingredients = {
+			{ type = "item", name = "iron-dust", amount = 50 },
+			{ type = "item", name = "salt", amount = 1 },
+		},
+		energy_required = 32,
+		results = {
+			{ type = "fluid", name = "molten-iron", amount = 500 },
+		},
+		allow_productivity = true,
+		hide_from_signal_gui = false,
+		main_product = "molten-iron",
+	},
+	{
+		type = "recipe",
+		name = "molten-copper-from-dust-salt",
+		icons = {
+			{ icon = "__decomposer__/graphics/copper-dust.png", icon_size = 64 },
+			{ icon = "__decomposer__/graphics/salt.png", icon_size = 64, scale = 0.3, shift = { 8, 8 } },
+		},
+		categories = { "metallurgy" },
+		subgroup = "vulcanus-processes",
+		order = "a[melting]-c[molten-copper-dust-salt]",
+		auto_recycle = false,
+		show_amount_in_title = false,
+		always_show_products = true,
+		enabled = false,
+		ingredients = {
+			{ type = "item", name = "copper-dust", amount = 50 },
+			{ type = "item", name = "salt", amount = 1 },
+		},
+		energy_required = 32,
+		results = {
+			{ type = "fluid", name = "molten-copper", amount = 500 },
+		},
+		allow_productivity = true,
+		hide_from_signal_gui = false,
+		main_product = "molten-copper",
+	},
+	{
+		type = "recipe",
+		name = "molten-iron-from-dust-calcite",
 		icons = {
 			{ icon = "__decomposer__/graphics/iron-dust.png", icon_size = 64 },
 			{ icon = "__space-age__/graphics/icons/calcite.png", icon_size = 64, scale = 0.3, shift = { 8, 8 } },
 		},
 		categories = { "metallurgy" },
 		subgroup = "vulcanus-processes",
-		order = "a[melting]-b[molten-iron-dust]",
+		order = "a[melting]-b[molten-iron-dust-calcite]",
 		auto_recycle = false,
 		show_amount_in_title = false,
 		always_show_products = true,
@@ -439,14 +712,14 @@ data:extend({
 	},
 	{
 		type = "recipe",
-		name = "molten-copper-from-dust",
+		name = "molten-copper-from-dust-calcite",
 		icons = {
 			{ icon = "__decomposer__/graphics/copper-dust.png", icon_size = 64 },
 			{ icon = "__space-age__/graphics/icons/calcite.png", icon_size = 64, scale = 0.3, shift = { 8, 8 } },
 		},
 		categories = { "metallurgy" },
 		subgroup = "vulcanus-processes",
-		order = "a[melting]-c[molten-copper-dust]",
+		order = "a[melting]-c[molten-copper-dust-calcite]",
 		auto_recycle = false,
 		show_amount_in_title = false,
 		always_show_products = true,
