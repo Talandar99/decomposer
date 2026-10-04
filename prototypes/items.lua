@@ -3,6 +3,14 @@ local item_effects = require("__space-age__.prototypes.item-effects")
 local item_tints = require("__base__.prototypes.item-tints")
 local item_sounds = require("__base__.prototypes.item_sounds")
 local sounds = require("__base__.prototypes.entity.sounds")
+require("__decomposer__.prototypes.utils.item-dust")
+
+make_dust_item("iron-dust")
+make_dust_item("copper-dust")
+make_dust_item("holmium-dust")
+make_dust_item("tungsten-dust")
+make_dust_item("lithium-dust")
+
 data:extend({
 	{
 		type = "item",
@@ -62,62 +70,6 @@ data:extend({
 })
 
 data:extend({
-	{
-		type = "item",
-		name = "iron-dust",
-		icon = "__decomposer__/graphics/iron-dust.png",
-		--subgroup = "pelagos-processes",
-		subgroup = "raw-material",
-		order = "za[dust]-[iron-dust]",
-		inventory_move_sound = item_sounds.metal_small_inventory_move,
-		pick_sound = item_sounds.metal_small_inventory_pickup,
-		drop_sound = item_sounds.metal_small_inventory_move,
-		stack_size = 50,
-		--default_import_location = "pelagos",
-		weight = 5 * kg,
-	},
-	{
-		type = "item",
-		name = "copper-dust",
-		icon = "__decomposer__/graphics/copper-dust.png",
-		--subgroup = "pelagos-processes",
-		subgroup = "raw-material",
-		order = "za[dust]-[copper-dust]",
-		inventory_move_sound = item_sounds.metal_small_inventory_move,
-		pick_sound = item_sounds.metal_small_inventory_pickup,
-		drop_sound = item_sounds.metal_small_inventory_move,
-		stack_size = 50,
-		--default_import_location = "pelagos",
-		weight = 5 * kg,
-	},
-	{
-		type = "item",
-		name = "holmium-dust",
-		icon = "__decomposer__/graphics/holmium-dust.png",
-		--subgroup = "pelagos-processes",
-		subgroup = "raw-material",
-		order = "za[dust]-[holmium-dust]",
-		inventory_move_sound = item_sounds.metal_small_inventory_move,
-		pick_sound = item_sounds.metal_small_inventory_pickup,
-		drop_sound = item_sounds.metal_small_inventory_move,
-		stack_size = 50,
-		--default_import_location = "pelagos",
-		weight = 5 * kg,
-	},
-	{
-		type = "item",
-		name = "tungsten-dust",
-		icon = "__decomposer__/graphics/tungsten-dust.png",
-		--subgroup = "pelagos-processes",
-		subgroup = "raw-material",
-		order = "za[dust]-[tungsten-dust]",
-		inventory_move_sound = item_sounds.metal_small_inventory_move,
-		pick_sound = item_sounds.metal_small_inventory_pickup,
-		drop_sound = item_sounds.metal_small_inventory_move,
-		stack_size = 50,
-		--default_import_location = "pelagos",
-		weight = 5 * kg,
-	},
 	{
 		type = "item",
 		name = "sand",

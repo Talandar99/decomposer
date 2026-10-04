@@ -87,12 +87,12 @@ data:extend({
 		icon = "__decomposer__/graphics/lithic-decomposition.png",
 		icon_size = 128,
 		effects = {
-			{ type = "unlock-recipe", recipe = "stone-erosion" },
+			{ type = "unlock-recipe", recipe = "stone-decomposition" },
 			{ type = "unlock-recipe", recipe = "decomposer-sandfill" },
-			{ type = "unlock-recipe", recipe = "iron-ore-decomposition" },
-			{ type = "unlock-recipe", recipe = "iron-plate-from-dust" },
-			{ type = "unlock-recipe", recipe = "copper-ore-decomposition" },
-			{ type = "unlock-recipe", recipe = "copper-plate-from-dust" },
+			--{ type = "unlock-recipe", recipe = "iron-ore-decomposition" },
+			--{ type = "unlock-recipe", recipe = "iron-plate-from-dust" },
+			--{ type = "unlock-recipe", recipe = "copper-ore-decomposition" },
+			--{ type = "unlock-recipe", recipe = "copper-plate-from-dust" },
 		},
 		prerequisites = { "decomposer" },
 		unit = {
@@ -116,11 +116,11 @@ data:extend({
 		icon = "__decomposer__/graphics/exotic-lithic-decomposition.png",
 		icon_size = 128,
 		effects = {
-			{ type = "unlock-recipe", recipe = "tungsten-ore-decomposition" },
-			{ type = "unlock-recipe", recipe = "tungsten-carbide-from-dust" },
-			{ type = "unlock-recipe", recipe = "tungsten-plate-from-dust" },
-			{ type = "unlock-recipe", recipe = "holmium-ore-decomposition" },
-			{ type = "unlock-recipe", recipe = "holmium-solution-from-dust" },
+			--{ type = "unlock-recipe", recipe = "tungsten-ore-decomposition" },
+			--{ type = "unlock-recipe", recipe = "tungsten-carbide-from-dust" },
+			--{ type = "unlock-recipe", recipe = "tungsten-plate-from-dust" },
+			--{ type = "unlock-recipe", recipe = "holmium-ore-decomposition" },
+			--{ type = "unlock-recipe", recipe = "holmium-solution-from-dust" },
 		},
 		prerequisites = { "lithic-decomposition", "electromagnetic-science-pack", "metallurgic-science-pack" },
 		unit = {
@@ -133,6 +133,28 @@ data:extend({
 				{ "agricultural-science-pack", 1 },
 				{ "electromagnetic-science-pack", 1 },
 				{ "metallurgic-science-pack", 1 },
+			},
+			time = 60,
+		},
+		order = "[decomposer]",
+	},
+})
+data:extend({
+	{
+		type = "technology",
+		name = "accelerated-selection",
+		icon = "__decomposer__/graphics/accelerated-selection.png",
+		icon_size = 200,
+		effects = {},
+		prerequisites = { "exotic-lithic-decomposition", "organic-decomposition" },
+		unit = {
+			count = 2500,
+			ingredients = {
+				{ "automation-science-pack", 1 },
+				{ "logistic-science-pack", 1 },
+				{ "chemical-science-pack", 1 },
+				{ "space-science-pack", 1 },
+				{ "agricultural-science-pack", 1 },
 			},
 			time = 60,
 		},
@@ -195,8 +217,8 @@ data:extend({
 	{
 		type = "technology",
 		name = "improvised-landfill",
-		icon = "__decomposer__/graphics/improvised-landfill.png",
-		icon_size = 64,
+		icon = "__decomposer__/graphics/improvised-landfill-tech.png",
+		icon_size = 256,
 		effects = {
 			{ type = "unlock-recipe", recipe = "improvised-landfill" },
 		},
@@ -208,7 +230,6 @@ data:extend({
 				{ "automation-science-pack", 1 },
 				{ "logistic-science-pack", 1 },
 				{ "chemical-science-pack", 1 },
-				{ "space-science-pack", 1 },
 				{ "agricultural-science-pack", 1 },
 			},
 			time = 60,
@@ -239,5 +260,149 @@ data:extend({
 			},
 			time = 60,
 		},
+	},
+})
+
+data:extend({
+	{
+		type = "technology",
+		name = "landfill-productivity",
+		icons = util.technology_icon_constant_recipe_productivity("__decomposer__/graphics/landfill-productivity.png"),
+		icon_size = 256,
+		effects = {
+			--{
+			--	type = "change-recipe-productivity",
+			--	recipe = "wooden-platform",
+			--	change = 0.1,
+			--},
+			{
+				type = "change-recipe-productivity",
+				recipe = "decomposer-sandfill",
+				change = 0.1,
+			},
+			{
+				type = "change-recipe-productivity",
+				recipe = "landfill",
+				change = 0.1,
+			},
+			{
+				type = "change-recipe-productivity",
+				recipe = "improvised-landfill",
+				change = 0.1,
+			},
+			{
+				type = "change-recipe-productivity",
+				recipe = "ice-platform",
+				change = 0.1,
+			},
+			{
+				type = "change-recipe-productivity",
+				recipe = "space-platform-foundation",
+				change = 0.1,
+			},
+			{
+				type = "change-recipe-productivity",
+				recipe = "foundation",
+				change = 0.1,
+			},
+			{
+				type = "change-recipe-productivity",
+				recipe = "artificial-yumako-soil",
+				change = 0.1,
+			},
+			{
+				type = "change-recipe-productivity",
+				recipe = "overgrowth-yumako-soil",
+				change = 0.1,
+			},
+			{
+				type = "change-recipe-productivity",
+				recipe = "artificial-jellynut-soil",
+				change = 0.1,
+			},
+			{
+				type = "change-recipe-productivity",
+				recipe = "overgrowth-jellynut-soil",
+				change = 0.1,
+			},
+		},
+		prerequisites = { "improvised-landfill", "agricultural-science-pack" },
+		unit = {
+			count_formula = "1.5^L*2000",
+			ingredients = {
+				{ "automation-science-pack", 1 },
+				{ "logistic-science-pack", 1 },
+				{ "chemical-science-pack", 1 },
+				{ "production-science-pack", 1 },
+				{ "agricultural-science-pack", 1 },
+				--{ "pelagos-science-pack", 1 },
+			},
+			time = 60,
+		},
+		max_level = "infinite",
+		upgrade = true,
+	},
+})
+data:extend({
+	{
+		type = "technology",
+		name = "cultivation-productivity",
+		icons = util.technology_icon_constant_recipe_productivity(
+			"__decomposer__/graphics/cultivation-productivity.png"
+		),
+		icon_size = 256,
+		effects = {
+			{
+				type = "change-recipe-productivity",
+				recipe = "fermentation-bacteria-cultivation",
+				change = 0.1,
+			},
+			{
+				type = "change-recipe-productivity",
+				recipe = "fermentation-bacteria-cultivation-fermented-fish",
+				change = 0.1,
+			},
+			{
+				type = "change-recipe-productivity",
+				recipe = "lithic-bacteria-cultivation",
+				change = 0.1,
+			},
+			{
+				type = "change-recipe-productivity",
+				recipe = "iron-bacteria-cultivation",
+				change = 0.1,
+			},
+			{
+				type = "change-recipe-productivity",
+				recipe = "copper-bacteria-cultivation",
+				change = 0.1,
+			},
+			--{
+			--	type = "change-recipe-productivity",
+			--	recipe = "fish-breeding",
+			--	change = 0.05,
+			--},
+			{
+				type = "change-recipe-productivity",
+				recipe = "pentapod-egg",
+				change = 0.1,
+			},
+		},
+		prerequisites = { "organic-decomposition", "lithic-decomposition" },
+		unit = {
+			--count_formula = "1.5^L*1000",
+			count_formula = "1.5^L*1000",
+			ingredients = {
+				{ "automation-science-pack", 1 },
+				{ "logistic-science-pack", 1 },
+				{ "chemical-science-pack", 1 },
+				{ "production-science-pack", 1 },
+				--{ "pelagos-science-pack", 1 },
+				{ "agricultural-science-pack", 1 },
+			},
+			time = 60,
+		},
+		max_level = "infinite",
+		upgrade = true,
 	},
 })

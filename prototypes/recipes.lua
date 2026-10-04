@@ -6,7 +6,49 @@ data:extend({
 		order = "mb",
 	},
 })
--- fermentation bacteria
+
+require("prototypes.utils.salt-preservation")
+require("prototypes.utils.ore-decomposition")
+require("prototypes.utils.ore-degradation")
+require("prototypes.utils.dust-recipe")
+
+salt_preservation_recipe("raw-fish", "__decomposer__/graphics/salted-fish.png")
+salt_preservation_recipe("pentapod-egg", "__decomposer__/graphics/salted-pentapod-egg.png")
+salt_preservation_recipe("biter-egg", "__decomposer__/graphics/salted-biter-egg.png")
+
+make_ore_decomposition_recipe("stone", "sand", "__base__/graphics/icons/stone.png")
+make_ore_degradation_recipe("stone", "lithic-decomposition")
+
+-- iron
+make_ore_decomposition_recipe("iron-ore", "iron-dust", "lithic-decomposition")
+make_dust_recipe("iron-ore", "iron-dust", "iron-plate", "lithic-decomposition")
+make_ore_degradation_recipe("iron-ore", "lithic-decomposition")
+
+-- copper
+make_ore_decomposition_recipe("copper-ore", "copper-dust", "lithic-decomposition")
+make_dust_recipe("copper-ore", "copper-dust", "copper-plate", "lithic-decomposition")
+make_ore_degradation_recipe("copper-ore", "lithic-decomposition")
+
+-- holmium
+make_ore_decomposition_recipe("holmium-ore", "holmium-dust", "exotic-lithic-decomposition")
+make_dust_recipe("holmium-ore", "holmium-dust", "holmium-solution", "exotic-lithic-decomposition")
+make_ore_degradation_recipe("holmium-ore", "exotic-lithic-decomposition")
+
+-- tungsten
+make_ore_decomposition_recipe("tungsten-ore", "tungsten-dust", "exotic-lithic-decomposition")
+make_dust_recipe("tungsten-ore", "tungsten-dust", "tungsten-plate", "exotic-lithic-decomposition")
+make_dust_recipe("tungsten-ore", "tungsten-dust", "tungsten-carbide", "exotic-lithic-decomposition")
+make_ore_degradation_recipe("tungsten-ore", "lithic-decomposition")
+
+-- lithium
+make_ore_decomposition_recipe(
+	"lithium",
+	"lithium-dust",
+	"__space-age__/graphics/icons/lithium.png",
+	"exotic-lithic-decomposition"
+)
+make_dust_recipe("lithium", "lithium-dust", "lithium-plate", "exotic-lithic-decomposition")
+
 -- lithic bacteria
 data:extend({
 	{
@@ -163,7 +205,7 @@ data:extend({
 			{
 				type = "item",
 				name = "lithic-bacteria",
-				amount = 3,
+				amount = 4,
 				reset_freshness_on_craft = true,
 			},
 		},
@@ -275,28 +317,6 @@ data:extend({
 	--	},
 	{
 		type = "recipe",
-		name = "stone-erosion",
-		categories = "decomposition",
-		icons = {
-			{ icon = "__base__/graphics/icons/stone.png", icon_size = 64 },
-			{ icon = "__base__/graphics/icons/fluid/water.png", icon_size = 64, scale = 0.3, shift = { 8, 8 } },
-		},
-		enabled = false,
-		auto_recycle = false,
-		energy_required = 5.0,
-		ingredients = {
-			{ type = "fluid", name = "water", amount = 10 },
-			{ type = "item", name = "stone", amount = 5 },
-		},
-		main_product = "sand",
-		results = {
-			{ type = "item", name = "sand", amount = 10 },
-			{ type = "fluid", name = "water", amount = 2, ignored_by_stats = 2, ignored_by_productivity = 2 },
-		},
-		allow_productivity = true,
-	},
-	{
-		type = "recipe",
 		name = "decomposer",
 		categories = { "decomposition", "crafting", "organic" },
 		subgroup = "agriculture-processes",
@@ -325,115 +345,6 @@ data:extend({
 data:extend({
 	{
 		type = "recipe",
-		name = "stone-erosion",
-		categories = { "decomposition" },
-		icons = {
-			{ icon = "__decomposer__/graphics/lithic-bacteria.png", icon_size = 64 },
-			{ icon = "__base__/graphics/icons/stone.png", icon_size = 64, scale = 0.3, shift = { 8, 8 } },
-		},
-		enabled = false,
-		auto_recycle = false,
-		energy_required = 5,
-		ingredients = {
-			{ type = "item", name = "stone", amount = 5 },
-			{ type = "item", name = "lithic-bacteria", amount = 1 },
-			{ type = "fluid", name = "water", amount = 10 },
-		},
-		results = {
-			{ type = "item", name = "sand", amount = 10 },
-		},
-		allow_productivity = true,
-	},
-	{
-		type = "recipe",
-		name = "iron-ore-decomposition",
-		categories = { "decomposition" },
-		subgroup = "agriculture-processes",
-		icons = {
-			{ icon = "__decomposer__/graphics/lithic-bacteria.png", icon_size = 64 },
-			{ icon = "__base__/graphics/icons/iron-ore.png", icon_size = 64, scale = 0.3, shift = { 8, 8 } },
-		},
-		enabled = false,
-		auto_recycle = false,
-		energy_required = 5,
-		ingredients = {
-			{ type = "item", name = "iron-ore", amount = 5 },
-			{ type = "item", name = "lithic-bacteria", amount = 1 },
-			{ type = "fluid", name = "water", amount = 10 },
-		},
-		results = {
-			{ type = "item", name = "iron-dust", amount = 10 },
-		},
-		allow_productivity = true,
-	},
-	{
-		type = "recipe",
-		name = "copper-ore-decomposition",
-		categories = { "decomposition" },
-		subgroup = "agriculture-processes",
-		icons = {
-			{ icon = "__decomposer__/graphics/lithic-bacteria.png", icon_size = 64 },
-			{ icon = "__base__/graphics/icons/copper-ore.png", icon_size = 64, scale = 0.3, shift = { 8, 8 } },
-		},
-		enabled = false,
-		auto_recycle = false,
-		energy_required = 5,
-		ingredients = {
-			{ type = "item", name = "copper-ore", amount = 5 },
-			{ type = "item", name = "lithic-bacteria", amount = 1 },
-			{ type = "fluid", name = "water", amount = 10 },
-		},
-		results = {
-			{ type = "item", name = "copper-dust", amount = 10 },
-		},
-		allow_productivity = true,
-	},
-	{
-		type = "recipe",
-		name = "holmium-ore-decomposition",
-		categories = { "decomposition" },
-		subgroup = "agriculture-processes",
-		icons = {
-			{ icon = "__decomposer__/graphics/lithic-bacteria.png", icon_size = 64 },
-			{ icon = "__space-age__/graphics/icons/holmium-ore.png", icon_size = 64, scale = 0.3, shift = { 8, 8 } },
-		},
-		enabled = false,
-		auto_recycle = false,
-		energy_required = 5,
-		ingredients = {
-			{ type = "item", name = "holmium-ore", amount = 5 },
-			{ type = "item", name = "lithic-bacteria", amount = 1 },
-			{ type = "fluid", name = "water", amount = 10 },
-		},
-		results = {
-			{ type = "item", name = "holmium-dust", amount = 10 },
-		},
-		allow_productivity = true,
-	},
-	{
-		type = "recipe",
-		name = "tungsten-ore-decomposition",
-		categories = { "decomposition" },
-		subgroup = "agriculture-processes",
-		icons = {
-			{ icon = "__decomposer__/graphics/lithic-bacteria.png", icon_size = 64 },
-			{ icon = "__space-age__/graphics/icons/tungsten-ore.png", icon_size = 64, scale = 0.3, shift = { 8, 8 } },
-		},
-		enabled = false,
-		auto_recycle = false,
-		energy_required = 5,
-		ingredients = {
-			{ type = "item", name = "tungsten-ore", amount = 5 },
-			{ type = "item", name = "lithic-bacteria", amount = 1 },
-			{ type = "fluid", name = "water", amount = 10 },
-		},
-		results = {
-			{ type = "item", name = "tungsten-dust", amount = 10 },
-		},
-		allow_productivity = true,
-	},
-	{
-		type = "recipe",
 		name = "salt-water-decomposition",
 		categories = { "decomposition" },
 		subgroup = "agriculture-processes",
@@ -453,127 +364,6 @@ data:extend({
 			{ type = "fluid", name = "water", amount = 100 },
 		},
 		allow_productivity = true,
-	},
-})
-data:extend({
-	{
-		type = "recipe",
-		name = "iron-plate-from-dust",
-		icons = {
-			{ icon = "__decomposer__/graphics/iron-dust.png", icon_size = 64 },
-			{ icon = "__base__/graphics/icons/iron-plate.png", icon_size = 64, scale = 0.5, shift = { 8, 8 } },
-		},
-		auto_recycle = false,
-		categories = { "smelting" },
-		enabled = false,
-		energy_required = 4,
-		ingredients = { { type = "item", name = "iron-dust", amount = 1 } },
-		results = { { type = "item", name = "iron-plate", amount = 1 } },
-		allow_productivity = true,
-		crafting_machine_tint = {
-			primary = { r = 0.5, g = 0.5, b = 0.5, a = 1.000 },
-			secondary = { r = 0.7, g = 0.7, b = 0.7, a = 1.000 },
-		},
-	},
-	{
-		type = "recipe",
-		name = "copper-plate-from-dust",
-		icons = {
-			{ icon = "__decomposer__/graphics/copper-dust.png", icon_size = 64 },
-			{ icon = "__base__/graphics/icons/copper-plate.png", icon_size = 64, scale = 0.5, shift = { 8, 8 } },
-		},
-		auto_recycle = false,
-		categories = { "smelting" },
-		enabled = false,
-		energy_required = 4,
-		ingredients = { { type = "item", name = "copper-dust", amount = 1 } },
-		results = { { type = "item", name = "copper-plate", amount = 1 } },
-		allow_productivity = true,
-		crafting_machine_tint = {
-			primary = { r = 0.8, g = 0.4, b = 0.2, a = 1.000 },
-			secondary = { r = 0.9, g = 0.5, b = 0.3, a = 1.000 },
-		},
-	},
-	{
-		type = "recipe",
-		name = "tungsten-plate-from-dust",
-		icons = {
-			{ icon = "__decomposer__/graphics/tungsten-dust.png", icon_size = 64 },
-			{ icon = "__space-age__/graphics/icons/tungsten-plate.png", icon_size = 64, scale = 0.5, shift = { 8, 8 } },
-		},
-		categories = { "metallurgy" },
-		subgroup = "vulcanus-processes",
-		order = "c[tungsten]-c[tungsten-plate]",
-		enabled = false,
-		ingredients = {
-			{ type = "item", name = "tungsten-dust", amount = 4 },
-			{ type = "fluid", name = "molten-iron", amount = 10 },
-		},
-		energy_required = 10,
-		results = { { type = "item", name = "tungsten-plate", amount = 1 } },
-		allow_productivity = true,
-		auto_recycle = false,
-	},
-	{
-		type = "recipe",
-		name = "tungsten-carbide-from-dust",
-		icons = {
-			{ icon = "__decomposer__/graphics/tungsten-dust.png", icon_size = 64 },
-			{
-				icon = "__space-age__/graphics/icons/tungsten-carbide.png",
-				icon_size = 64,
-				scale = 0.5,
-				shift = { 8, 8 },
-			},
-		},
-		categories = { "crafting-with-fluid" },
-		subgroup = "vulcanus-processes",
-		order = "c[tungsten]-b[tungsten-carbide]",
-		enabled = false,
-		ingredients = {
-			{ type = "item", name = "tungsten-dust", amount = 2 },
-			{ type = "fluid", name = "sulfuric-acid", amount = 10 },
-			{ type = "item", name = "carbon", amount = 1 },
-		},
-		energy_required = 1,
-		results = { { type = "item", name = "tungsten-carbide", amount = 1 } },
-		allow_productivity = true,
-		auto_recycle = false,
-	},
-	{
-		type = "recipe",
-		name = "holmium-solution-from-dust",
-		icons = {
-			{ icon = "__decomposer__/graphics/holmium-dust.png", icon_size = 64 },
-			{
-				icon = "__space-age__/graphics/icons/fluid/holmium-solution.png",
-				icon_size = 64,
-				scale = 0.5,
-				shift = { 8, 8 },
-			},
-		},
-		categories = { "chemistry" },
-		subgroup = "fulgora-processes",
-		order = "b[holmium]-b[holmium-solution]",
-		auto_recycle = false,
-		energy_required = 10,
-		ingredients = {
-			{ type = "item", name = "holmium-dust", amount = 2 },
-			{ type = "item", name = "stone", amount = 1 },
-			{ type = "fluid", name = "water", amount = 10 },
-		},
-		results = {
-			{ type = "fluid", name = "holmium-solution", amount = 100 },
-		},
-		allow_productivity = true,
-		main_product = "holmium-solution",
-		enabled = false,
-		crafting_machine_tint = {
-			primary = { r = 0.598, g = 0.274, b = 0.501, a = 0.502 }, -- #98457f80
-			secondary = { r = 0.524, g = 0.499, b = 0.521, a = 0.502 }, -- #857f8480
-			tertiary = { r = 0.716, g = 0.716, b = 0.716, a = 0.502 }, -- #b6b6b680
-			quaternary = { r = 0.768, g = 0.487, b = 0.684, a = 0.502 }, -- #c37cae80
-		},
 	},
 })
 data:extend({

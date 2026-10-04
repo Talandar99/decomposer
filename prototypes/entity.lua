@@ -196,7 +196,7 @@ data:extend({
 			effectivity = 2,
 			burner_usage = "nutrients",
 			fuel_inventory_size = 1,
-			emissions_per_minute = { pollution = -1 },
+			emissions_per_minute = { pollution = -2 },
 			light_flicker = require("__space-age__.prototypes.entity.biochamber-pictures").light_flicker,
 		},
 		energy_usage = "500kW",
