@@ -6,6 +6,14 @@ data:extend({
 		order = "mb",
 	},
 })
+data:extend({
+	{
+		type = "item-subgroup",
+		name = "ore-degradation",
+		group = "intermediate-products",
+		order = "ma",
+	},
+})
 
 require("prototypes.utils.salt-preservation")
 require("prototypes.utils.ore-decomposition")
@@ -648,5 +656,52 @@ data:extend({
 		},
 		allow_productivity = true,
 		allow_decomposition = false,
+	},
+})
+
+data:extend({
+	{
+		type = "recipe",
+		name = "degradation-module",
+		enabled = false,
+		auto_recycle = false,
+		categories = { "decomposition" },
+		ingredients = {
+			{ type = "item", name = "quality-module", amount = 1 },
+			{ type = "item", name = "fermentation-bacteria", amount = 2 },
+			{ type = "item", name = "lithic-bacteria", amount = 1 },
+		},
+		energy_required = 15,
+		results = { { type = "item", name = "degradation-module", amount = 1 } },
+	},
+	{
+		type = "recipe",
+		name = "degradation-module-2",
+		enabled = false,
+		auto_recycle = false,
+		categories = { "decomposition" },
+		ingredients = {
+			{ type = "item", name = "quality-module-2", amount = 1 },
+			{ type = "item", name = "degradation-module", amount = 4 },
+			{ type = "item", name = "fermentation-bacteria", amount = 6 },
+			{ type = "item", name = "lithic-bacteria", amount = 3 },
+		},
+		energy_required = 30,
+		results = { { type = "item", name = "degradation-module-2", amount = 1 } },
+	},
+	{
+		type = "recipe",
+		name = "degradation-module-3",
+		enabled = false,
+		auto_recycle = false,
+		categories = { "decomposition" },
+		ingredients = {
+			{ type = "item", name = "quality-module-3", amount = 1 },
+			{ type = "item", name = "degradation-module-2", amount = 4 },
+			{ type = "item", name = "fermentation-bacteria", amount = 10 },
+			{ type = "item", name = "lithic-bacteria", amount = 5 },
+		},
+		energy_required = 60,
+		results = { { type = "item", name = "degradation-module-3", amount = 1 } },
 	},
 })

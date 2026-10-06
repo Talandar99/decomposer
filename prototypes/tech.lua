@@ -136,7 +136,7 @@ data:extend({
 			},
 			time = 60,
 		},
-		order = "[decomposer]",
+		order = "b[decomposer]",
 	},
 })
 data:extend({
@@ -158,7 +158,7 @@ data:extend({
 			},
 			time = 60,
 		},
-		order = "[decomposer]",
+		order = "b[decomposer]",
 	},
 })
 data:extend({
@@ -182,7 +182,7 @@ data:extend({
 			},
 			time = 60,
 		},
-		order = "[decomposer]-b[organic-sludge]",
+		order = "z[decomposer]",
 	},
 })
 data:extend({
@@ -209,7 +209,7 @@ data:extend({
 			},
 			time = 60,
 		},
-		order = "g[vulcanus]-b[lithic-melting]",
+		order = "a[decomposer]",
 	},
 })
 
@@ -222,7 +222,7 @@ data:extend({
 		effects = {
 			{ type = "unlock-recipe", recipe = "improvised-landfill" },
 		},
-		order = "[decomposer]",
+		order = "bz[decomposer]",
 		prerequisites = { "organic-decomposition" },
 		unit = {
 			count = 1000,
@@ -269,6 +269,7 @@ data:extend({
 		name = "landfill-productivity",
 		icons = util.technology_icon_constant_recipe_productivity("__decomposer__/graphics/landfill-productivity.png"),
 		icon_size = 256,
+		order = "bz[decomposer]",
 		effects = {
 			--{
 			--	type = "change-recipe-productivity",
@@ -388,7 +389,7 @@ data:extend({
 				change = 0.1,
 			},
 		},
-		prerequisites = { "organic-decomposition", "lithic-decomposition" },
+		prerequisites = { "organic-decomposition", "lithic-decomposition", "accelerated-selection" },
 		unit = {
 			--count_formula = "1.5^L*1000",
 			count_formula = "1.5^L*1000",
@@ -404,5 +405,71 @@ data:extend({
 		},
 		max_level = "infinite",
 		upgrade = true,
+	},
+})
+
+data:extend({
+	{
+		type = "technology",
+		name = "degradation-module",
+		icon = "__decomposer__/graphics/degradation-module/degradation-module-1-tech.png",
+		icon_size = 256,
+		prerequisites = { "agricultural-science-pack", "quality-module", "decomposer" },
+		effects = {
+			{ type = "unlock-recipe", recipe = "degradation-module" },
+		},
+		unit = {
+			count = 500,
+			ingredients = {
+				{ "automation-science-pack", 1 },
+				{ "logistic-science-pack", 1 },
+				{ "chemical-science-pack", 1 },
+				{ "agricultural-science-pack", 1 },
+			},
+			time = 60,
+		},
+	},
+	{
+		type = "technology",
+		name = "degradation-module-2",
+		icon = "__decomposer__/graphics/degradation-module/degradation-module-2-tech.png",
+		icon_size = 256,
+		prerequisites = { "degradation-module", "quality-module-2" },
+		effects = {
+			{ type = "unlock-recipe", recipe = "degradation-module-2" },
+		},
+		unit = {
+			count = 2000,
+			ingredients = {
+				{ "automation-science-pack", 1 },
+				{ "logistic-science-pack", 1 },
+				{ "chemical-science-pack", 1 },
+				{ "space-science-pack", 1 },
+				{ "agricultural-science-pack", 1 },
+			},
+			time = 60,
+		},
+	},
+	{
+		type = "technology",
+		name = "degradation-module-3",
+		icon = "__decomposer__/graphics/degradation-module/degradation-module-3-tech.png",
+		icon_size = 256,
+		prerequisites = { "degradation-module-2", "quality-module-3" },
+		effects = {
+			{ type = "unlock-recipe", recipe = "degradation-module-3" },
+		},
+		unit = {
+			count = 2000,
+			ingredients = {
+				{ "automation-science-pack", 1 },
+				{ "logistic-science-pack", 1 },
+				{ "chemical-science-pack", 1 },
+				{ "space-science-pack", 1 },
+				{ "agricultural-science-pack", 1 },
+				{ "electromagnetic-science-pack", 1 },
+			},
+			time = 60,
+		},
 	},
 })
