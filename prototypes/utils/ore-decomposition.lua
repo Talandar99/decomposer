@@ -10,8 +10,8 @@ function make_ore_decomposition_recipe(ingredient_item, result_item, tech_name)
 			type = "recipe",
 			name = recipe_name,
 			categories = { "decomposition" },
-			subgroup = "agriculture-processes",
-			order = "b[agriculture]-aa[ore-bio-decomposition]-[" .. ingredient_item .. "]",
+			subgroup = "ore-bio-decomposition",
+			order = "b[agriculture]-o[ore-bio-decomposition]-[" .. ingredient_item .. "]",
 			localised_name = {
 				"recipe-name.ore-bio-decomposition",
 				{ "item-name." .. ingredient_item },

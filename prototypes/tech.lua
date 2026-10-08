@@ -142,8 +142,8 @@ data:extend({
 data:extend({
 	{
 		type = "technology",
-		name = "accelerated-selection",
-		icon = "__decomposer__/graphics/accelerated-selection.png",
+		name = "forced-selection",
+		icon = "__decomposer__/graphics/forced-selection.png",
 		icon_size = 200,
 		effects = {},
 		prerequisites = { "exotic-lithic-decomposition", "organic-decomposition" },
@@ -298,11 +298,6 @@ data:extend({
 			},
 			{
 				type = "change-recipe-productivity",
-				recipe = "space-platform-foundation",
-				change = 0.1,
-			},
-			{
-				type = "change-recipe-productivity",
 				recipe = "foundation",
 				change = 0.1,
 			},
@@ -389,7 +384,7 @@ data:extend({
 				change = 0.1,
 			},
 		},
-		prerequisites = { "organic-decomposition", "lithic-decomposition", "accelerated-selection" },
+		prerequisites = { "organic-decomposition", "lithic-decomposition", "forced-selection" },
 		unit = {
 			--count_formula = "1.5^L*1000",
 			count_formula = "1.5^L*1000",

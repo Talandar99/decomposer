@@ -135,7 +135,8 @@ data:extend({
 		drop_sound = item_sounds.module_inventory_move,
 		stack_size = 50,
 		weight = 20 * kg,
-		effect = { quality = -0.15, speed = 0.05, consumption = -0.005 },
+		quality_quality_multiplier = 1,
+		effect = { quality = -0.10, speed = 0.05, consumption = -0.01 },
 	},
 	{
 		type = "module",
@@ -153,7 +154,8 @@ data:extend({
 		drop_sound = item_sounds.module_inventory_move,
 		stack_size = 50,
 		weight = 20 * kg,
-		effect = { quality = -0.3, speed = 0.08, consumption = -0.01 },
+		quality_quality_multiplier = 1,
+		effect = { quality = -0.20, speed = 0.08, consumption = -0.02 },
 	},
 	{
 		type = "module",
@@ -171,6 +173,7 @@ data:extend({
 		drop_sound = item_sounds.module_inventory_move,
 		stack_size = 50,
 		weight = 20 * kg,
-		effect = { quality = -0.5, speed = 0.15, consumption = -0.02 },
+		quality_quality_multiplier = 1,
+		effect = { quality = -0.40, speed = 0.15, consumption = -0.05 },
 	},
 })

@@ -3,58 +3,59 @@ data:extend({
 		type = "item-subgroup",
 		name = "decomposition-products",
 		group = "intermediate-products",
-		order = "mb",
+		order = "m-ac",
 	},
 })
 data:extend({
 	{
 		type = "item-subgroup",
-		name = "ore-degradation",
+		name = "ore-bio-decomposition",
 		group = "intermediate-products",
-		order = "ma",
+		order = "m-ab",
+	},
+})
+data:extend({
+	{
+		type = "item-subgroup",
+		name = "forced-bacteria-selection",
+		group = "intermediate-products",
+		order = "m-aa",
 	},
 })
 
 require("prototypes.utils.salt-preservation")
 require("prototypes.utils.ore-decomposition")
-require("prototypes.utils.ore-degradation")
+require("prototypes.utils.forced-selection")
 require("prototypes.utils.dust-recipe")
 
 salt_preservation_recipe("raw-fish", "__decomposer__/graphics/salted-fish.png")
 salt_preservation_recipe("pentapod-egg", "__decomposer__/graphics/salted-pentapod-egg.png")
 salt_preservation_recipe("biter-egg", "__decomposer__/graphics/salted-biter-egg.png")
-
 make_ore_decomposition_recipe("stone", "sand", "__base__/graphics/icons/stone.png")
-make_ore_degradation_recipe("stone", "lithic-decomposition")
 
 -- iron
 make_ore_decomposition_recipe("iron-ore", "iron-dust", "lithic-decomposition")
 make_dust_recipe("iron-ore", "iron-dust", "iron-plate", "lithic-decomposition")
-make_ore_degradation_recipe("iron-ore", "lithic-decomposition")
 
 -- copper
 make_ore_decomposition_recipe("copper-ore", "copper-dust", "lithic-decomposition")
 make_dust_recipe("copper-ore", "copper-dust", "copper-plate", "lithic-decomposition")
-make_ore_degradation_recipe("copper-ore", "lithic-decomposition")
 
 -- holmium
 make_ore_decomposition_recipe("holmium-ore", "holmium-dust", "exotic-lithic-decomposition")
 make_dust_recipe("holmium-ore", "holmium-dust", "holmium-solution", "exotic-lithic-decomposition")
-make_ore_degradation_recipe("holmium-ore", "exotic-lithic-decomposition")
 
 -- tungsten
 make_ore_decomposition_recipe("tungsten-ore", "tungsten-dust", "exotic-lithic-decomposition")
 make_dust_recipe("tungsten-ore", "tungsten-dust", "tungsten-plate", "exotic-lithic-decomposition")
 make_dust_recipe("tungsten-ore", "tungsten-dust", "tungsten-carbide", "exotic-lithic-decomposition")
-make_ore_degradation_recipe("tungsten-ore", "lithic-decomposition")
+
+make_accelerated_selection_recipe("copper-bacteria")
+make_accelerated_selection_recipe("iron-bacteria")
+make_accelerated_selection_recipe("fermentation-bacteria")
 
 -- lithium
-make_ore_decomposition_recipe(
-	"lithium",
-	"lithium-dust",
-	"__space-age__/graphics/icons/lithium.png",
-	"exotic-lithic-decomposition"
-)
+make_ore_decomposition_recipe("lithium", "lithium-dust", "exotic-lithic-decomposition")
 make_dust_recipe("lithium", "lithium-dust", "lithium-plate", "exotic-lithic-decomposition")
 
 -- lithic bacteria
@@ -78,8 +79,8 @@ data:extend({
 				type = "item",
 				name = "fermentation-bacteria",
 				amount = 1,
+				independent_probability = 0.1,
 				shared_probability = { min = 0, max = 1 },
-				independant_probability = 0.1,
 			},
 			{ type = "item", name = "spoilage", amount = 5 },
 		},
@@ -170,7 +171,7 @@ data:extend({
 		ingredients = {
 			{ type = "item", name = "fermentation-bacteria", amount = 20 },
 			{ type = "item", name = "iron-ore", amount = 5 },
-			{ type = "item", name = "nutrients", amount = 100 },
+			{ type = "item", name = "nutrients", amount = 20 },
 			{ type = "fluid", name = "water", amount = 100 },
 		},
 		results = {
@@ -178,8 +179,8 @@ data:extend({
 				type = "item",
 				name = "lithic-bacteria",
 				amount = 1,
-				shared_probability = { min = 0, max = 1 },
 				independent_probability = 0.1,
+				shared_probability = { min = 0, max = 1 },
 			},
 			{ type = "item", name = "spoilage", amount = 5 },
 		},
@@ -333,7 +334,7 @@ data:extend({
 		allow_productivity = true,
 		energy_required = 1,
 		ingredients = {
-			{ type = "item", name = "raw-fish", amount = 5 },
+			{ type = "item", name = "fermentation-bacteria", amount = 5 },
 			{ type = "item", name = "spoilage", amount = 50 },
 			{ type = "item", name = "wood", amount = 50 },
 			{ type = "item", name = "iron-plate", amount = 20 },
@@ -393,7 +394,7 @@ data:extend({
 			{ type = "fluid", name = "organic-sludge", amount = 50 },
 		},
 		main_product = "organic-sludge",
-		subgroup = "fluid-recipes",
+		subgroup = "decomposition-products",
 		allow_productivity = false,
 		maximum_productivity = 0,
 		allow_quality = false,

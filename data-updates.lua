@@ -1,7 +1,7 @@
 require("__decomposer__.prototypes.productivity-compat")
 require("__decomposer__.prototypes.utils.decomposing-into-spoilage")
-require("__decomposer__.prototypes.utils.ore-degradation")
 require("__decomposer__.prototypes.utils.item-dust")
+require("__decomposer__.prototypes.utils.forced-selection")
 
 decomposing_into_spoilage_recipe("decomposer", "wood", 40)
 decomposing_into_spoilage_recipe("organic-decomposition", "yumako-seed", 50)
@@ -22,7 +22,6 @@ if mods["Muria"] then
 	make_ore_decomposition_recipe("lead", "lead-dust", "exotic-lithic-decomposition")
 	make_dust_recipe("lead", "lead-dust", "muria-lead-plate", "exotic-lithic-decomposition")
 	make_dust_recipe("lead", "lead-dust", "molten-lead", "exotic-lithic-decomposition")
-	make_ore_degradation_recipe("lead", "lithic-decomposition")
 end
 if mods["planetaris-hyarion"] then
 	make_dust_recipe("iron-ore", "iron-dust", "planetaris-polishing-compound", "lithic-decomposition")
@@ -32,7 +31,6 @@ if mods["Paracelsin"] then
 	make_ore_decomposition_recipe("zinc", "zinc-dust", "exotic-lithic-decomposition")
 	make_dust_recipe("zinc", "zinc-dust", "zinc-plate", "exotic-lithic-decomposition")
 	make_dust_recipe("zinc", "zinc-dust", "casting-galvanized-steel-plate", "exotic-lithic-decomposition")
-	make_ore_degradation_recipe("zinc", "lithic-decomposition")
 end
 
 if mods["skewer_planet_vesta"] then
@@ -44,5 +42,7 @@ if data.raw["item"]["gold-ore"] and data.raw["item"]["gold-plate"] and data.raw[
 	make_ore_decomposition_recipe("gold-ore", "gold-dust", "lithic-decomposition")
 	make_dust_recipe("gold-ore", "gold-dust", "gold-plate", "lithic-decomposition")
 	make_dust_recipe("gold-ore", "gold-dust", "molten-gold", "exotic-lithic-decomposition")
-	make_ore_degradation_recipe("gold-ore", "lithic-decomposition")
+end
+if mods["planetaris-tellus"] then
+	make_accelerated_selection_recipe("planetaris-magnesium-bacteria")
 end
