@@ -46,3 +46,14 @@ end
 if mods["planetaris-tellus"] then
 	make_accelerated_selection_recipe("planetaris-magnesium-bacteria")
 end
+if mods["crushing-industry"] then
+	-- holmium
+	make_dust_recipe("holmium-powder", "holmium-dust", "holmium-solution", "exotic-lithic-decomposition")
+
+	make_dust_recipe("crushed-tungsten-ore", "tungsten-dust", "tungsten-plate", "exotic-lithic-decomposition")
+	make_dust_recipe("tungsten-ore", "tungsten-dust", "tungsten-carbide", "exotic-lithic-decomposition")
+
+	if data.raw["item"]["gold-ore"] and data.raw["item"]["gold-plate"] and data.raw["fluid"]["molten-gold"] then
+		make_dust_recipe("crushed-gold-ore", "gold-dust", "molten-gold", "exotic-lithic-decomposition")
+	end
+end
