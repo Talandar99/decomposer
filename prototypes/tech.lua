@@ -2,7 +2,7 @@ data:extend({
 	{
 		type = "technology",
 		name = "decomposer",
-		icon = "__decomposer__/graphics/decomposer/decomposer256.png",
+		icon = "__decomposer__/graphics/decomposer/decomposer_technology.png",
 		icon_size = 256,
 		effects = {
 			{ type = "unlock-recipe", recipe = "decomposer" },

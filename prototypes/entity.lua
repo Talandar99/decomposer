@@ -1,119 +1,38 @@
 local item_sounds = require("__base__.prototypes.item_sounds")
 local hit_effects = require("__base__.prototypes.entity.hit-effects")
 
-local decomposerpipecoverspictures = function()
+local function decomposer_pipes()
 	return {
 		north = {
-			layers = {
-				{
-					filename = "__decomposer__/graphics/pipe_covers/long/pipe-N.png",
-					priority = "extra-high",
-					width = 71,
-					height = 38,
-					shift = util.by_pixel(2.25, 13.5),
-					scale = 0.5,
-				},
-				--	{
-				--		filename = "__base__/graphics/entity/pipe-covers/pipe-cover-north-shadow.png",
-				--		priority = "extra-high",
-				--		width = 128,
-				--		height = 128,
-				--		scale = 0.5,
-				--		draw_as_shadow = true,
-				--	},
-			},
-		},
-		east = {
-			layers = {
-				{
-					filename = "__base__/graphics/entity/pipe-covers/pipe-cover-east.png",
-					priority = "extra-high",
-					width = 128,
-					height = 128,
-					scale = 0.5,
-				},
-				{
-					filename = "__base__/graphics/entity/pipe-covers/pipe-cover-east-shadow.png",
-					priority = "extra-high",
-					width = 128,
-					height = 128,
-					scale = 0.5,
-					draw_as_shadow = true,
-				},
-			},
-		},
-		south = {
-			layers = {
-				{
-					filename = "__base__/graphics/entity/pipe-covers/pipe-cover-south.png",
-					priority = "extra-high",
-					width = 128,
-					height = 128,
-					scale = 0.5,
-				},
-				{
-					filename = "__base__/graphics/entity/pipe-covers/pipe-cover-south-shadow.png",
-					priority = "extra-high",
-					width = 128,
-					height = 128,
-					scale = 0.5,
-					draw_as_shadow = true,
-				},
-			},
-		},
-		west = {
-			layers = {
-				{
-					filename = "__base__/graphics/entity/pipe-covers/pipe-cover-west.png",
-					priority = "extra-high",
-					width = 128,
-					height = 128,
-					scale = 0.5,
-				},
-				{
-					filename = "__base__/graphics/entity/pipe-covers/pipe-cover-west-shadow.png",
-					priority = "extra-high",
-					width = 128,
-					height = 128,
-					scale = 0.5,
-					draw_as_shadow = true,
-				},
-			},
-		},
-	}
-end
-local function decomposerpipepictures()
-	return {
-		north = {
-			filename = "__decomposer__/graphics/pipe_covers/calciner/pipe-N.png",
-			priority = "low",
-			width = 71,
-			height = 38,
-			shift = util.by_pixel(2.25, 13.5),
+			filename = "__decomposer__/graphics/decomposer/decomposer_pipes_N.png",
+			priority = "extra-high",
+			width = 128,
+			height = 128,
+			shift = util.by_pixel(0, 32),
 			scale = 0.5,
 		},
 		east = {
-			filename = "__decomposer__/graphics/pipe_covers/calciner/pipe-E.png",
+			filename = "__decomposer__/graphics/decomposer/decomposer_pipes_E.png",
 			priority = "extra-high",
-			width = 42,
-			height = 76,
-			shift = util.by_pixel(-24.5, 1),
+			width = 128,
+			height = 128,
+			shift = util.by_pixel(-32, 0),
 			scale = 0.5,
 		},
 		south = {
-			filename = "__decomposer__/graphics/pipe_covers/calciner/pipe-S.png",
+			filename = "__decomposer__/graphics/decomposer/decomposer_pipes_S.png",
 			priority = "extra-high",
-			width = 88,
-			height = 61,
-			shift = util.by_pixel(0, -31.25),
+			width = 128,
+			height = 128,
+			shift = util.by_pixel(0, -32),
 			scale = 0.5,
 		},
 		west = {
-			filename = "__decomposer__/graphics/pipe_covers/calciner/pipe-W.png",
+			filename = "__decomposer__/graphics/decomposer/decomposer_pipes_W.png",
 			priority = "extra-high",
-			width = 39,
-			height = 73,
-			shift = util.by_pixel(25.75, 1.25),
+			width = 128,
+			height = 128,
+			shift = util.by_pixel(32, 0),
 			scale = 0.5,
 		},
 	}
@@ -130,7 +49,7 @@ data:extend({
 	{
 		type = "item",
 		name = "decomposer",
-		icon = "__decomposer__/graphics/decomposer/decomposer64.png",
+		icon = "__decomposer__/graphics/decomposer/decomposer_icon.png",
 		subgroup = "agriculture",
 		order = "b[decomposer]",
 		inventory_move_sound = item_sounds.fluid_inventory_move,
@@ -143,7 +62,7 @@ data:extend({
 	{
 		type = "assembling-machine",
 		name = "decomposer",
-		icon = "__decomposer__/graphics/decomposer/decomposer64.png",
+		icon = "__decomposer__/graphics/decomposer/decomposer_icon.png",
 		flags = { "placeable-neutral", "placeable-player", "player-creation" },
 		minable = { mining_time = 0.1, result = "decomposer" },
 		fast_replaceable_group = "decomposer",
@@ -162,34 +81,78 @@ data:extend({
 			animation = {
 				layers = {
 					{
-						filename = "__decomposer__/graphics/decomposer/decomposer256.png",
+						filename = "__decomposer__/graphics/decomposer/decomposer.png",
 						priority = "high",
-						width = 256,
-						height = 256,
+						width = 224,
+						height = 224,
 						frame_count = 1,
 						line_length = 1,
 						repeat_count = 1,
-						scale = 0.4575,
-						shift = { 0, -0.1 },
+						scale = 0.5,
+						shift = { 0, 0.0 },
 					},
 					{
-						filename = "__decomposer__/graphics/decomposer/decomposer-shadow.png",
+						filename = "__decomposer__/graphics/decomposer/decomposer_shadow.png",
 						priority = "high",
-						width = 384,
-						height = 256,
+						width = 320,
+						height = 320,
 						frame_count = 1,
 						line_length = 1,
 						repeat_count = 1,
-						scale = 0.4,
+						scale = 0.5,
 						draw_as_shadow = true,
-						shift = { 0.7, 0.1 },
+						shift = { 0.0, 0.0 },
+					},
+				},
+			},
+			working_visualisations = {
+				-- Jeśli masz też pod spodem pełną warstwę kolorową/bazową, możesz ją tu zostawić:
+				{
+					animation = {
+						filename = "__decomposer__/graphics/decomposer/decomposer-animation-color.png",
+						priority = "high",
+						width = 159,
+						height = 159,
+						frame_count = 240,
+						line_length = 16,
+						scale = 0.5,
+						shift = { 0, 0.0 },
+					},
+				},
+
+				-- 1. Tint Primary (warstwa A)
+				{
+					apply_recipe_tint = "primary",
+					animation = {
+						filename = "__decomposer__/graphics/decomposer/decomposer-animation-colorless-A.png",
+						priority = "high",
+						width = 159,
+						height = 159,
+						frame_count = 240,
+						line_length = 16,
+						scale = 0.5,
+						shift = { 0, 0.0 },
+					},
+				},
+				-- 2. Tint Secondary (warstwa B)
+				{
+					apply_recipe_tint = "secondary",
+					animation = {
+						filename = "__decomposer__/graphics/decomposer/decomposer-animation-colorless-B.png",
+						priority = "high",
+						width = 159,
+						height = 159,
+						frame_count = 240,
+						line_length = 16,
+						scale = 0.5,
+						shift = { 0, 0.0 },
 					},
 				},
 			},
 		},
 
 		crafting_speed = 2,
-		crafting_categories = { "decomposition" },
+		crafting_categories = { "decomposition", "organic" },
 		energy_source = {
 			type = "burner",
 			fuel_categories = { "nutrients" },
@@ -212,8 +175,8 @@ data:extend({
 		fluid_boxes = {
 			{
 				production_type = "input",
-				pipe_picture = decomposerpipepictures(),
-				pipe_covers = decomposerpipecoverspictures(),
+				pipe_picture = decomposer_pipes(),
+				pipe_covers = pipecoverspictures(),
 				volume = 1000,
 				pipe_connections = {
 					{ flow_direction = "input", direction = defines.direction.north, position = { 0, -1 } },
@@ -222,8 +185,8 @@ data:extend({
 			},
 			{
 				production_type = "output",
-				pipe_picture = decomposerpipepictures(),
-				pipe_covers = decomposerpipecoverspictures(),
+				pipe_picture = decomposer_pipes(),
+				pipe_covers = pipecoverspictures(),
 				volume = 1000,
 				pipe_connections = {
 					{ flow_direction = "output", direction = defines.direction.south, position = { 0, 1 } },
